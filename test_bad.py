@@ -1,0 +1,2 @@
+def BADstyle():
+    print("bad")
