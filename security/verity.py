@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 # Tailored script for Aperion.cc
 

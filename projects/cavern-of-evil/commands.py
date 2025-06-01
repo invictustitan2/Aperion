@@ -1,5 +1,6 @@
 from verbs import VERBS
 
+
 def parse_command(command):
     command = command.strip().lower()
     words = command.split()
