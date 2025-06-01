@@ -1,0 +1,6 @@
+#!/var/www/coala-env/bin/python3.9
+"""Mypy type checker command line tool."""
+
+from mypy.main import main
+
+main(__file__)

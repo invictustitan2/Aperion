@@ -1,0 +1,9 @@
+from typing import Any
+
+def ascii(obj: Any) -> str: ...
+
+
+def hex(x: int) -> str: ...
+
+
+def oct(x: int) -> str: ...

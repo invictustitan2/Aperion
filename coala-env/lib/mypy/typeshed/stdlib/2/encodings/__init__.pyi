@@ -1,0 +1,4 @@
+import codecs
+
+def search_function(encoding: str) -> codecs.CodecInfo:
+    ...
