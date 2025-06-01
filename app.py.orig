@@ -1,14 +1,7 @@
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 import sqlite3
 
-from flask import Flask
-from flask import jsonify
-from flask import redirect
-from flask import render_template
-from flask import request
-from flask import url_for
-
 app = Flask(__name__)
-
 
 @app.route('/')
 def index():
@@ -19,7 +12,6 @@ def index():
     cars = c.fetchall()
     conn.close()
     return render_template('index.html', cars=cars)
-
 
 @app.route('/add_car', methods=['POST'])
 def add_car():
@@ -41,7 +33,6 @@ def add_car():
     conn.close()
     return redirect(url_for('index'))
 
-
 @app.route('/update_complete', methods=['POST'])
 def update_complete():
     data = request.get_json()
@@ -49,12 +40,10 @@ def update_complete():
     complete = data['complete']
     conn = sqlite3.connect('package_cars.db')
     c = conn.cursor()
-    c.execute("UPDATE package_cars SET complete = ? WHERE id = ?",
-              (complete, car_id))
+    c.execute("UPDATE package_cars SET complete = ? WHERE id = ?", (complete, car_id))
     conn.commit()
     conn.close()
     return jsonify(success=True)
-
 
 @app.route('/update_field', methods=['POST'])
 def update_field():
@@ -64,12 +53,10 @@ def update_field():
     value = data['value']
     conn = sqlite3.connect('package_cars.db')
     c = conn.cursor()
-    c.execute(
-        f"UPDATE package_cars SET {field} = ? WHERE id = ?", (value, car_id))
+    c.execute(f"UPDATE package_cars SET {field} = ? WHERE id = ?", (value, car_id))
     conn.commit()
     conn.close()
     return jsonify(success=True)
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
