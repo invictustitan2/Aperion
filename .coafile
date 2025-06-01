@@ -1,0 +1,59 @@
+[default]
+bears = FilenameBear,DuplicateFileBear,LineLengthBear,TrailingWhitespaceBear
+files = **/*
+use_spaces = true
+indent_size = 4
+apply_autofixes = true
+
+[python]
+bears = PyLintBear,PEP8Bear,PyImportSortBear,PEP257Bear,RadonBear
+files = **/*.py
+radon_complexity_threshold = 10
+max_line_length = 88
+
+[javascript]
+bears = JSHintBear
+files = **/*.js
+
+[html]
+bears = HTMLLintBear
+files = **/*.html
+
+[css]
+bears = CSSLintBear
+files = **/*.css
+
+[yaml]
+bears = YAMLLintBear
+files = **/*.yml
+
+[json]
+bears = JSONFormatBear
+files = **/*.json
+
+[markdown]
+bears = MarkdownBear
+files = **/*.md
+
+[shell]
+bears = ShellCheckBear
+files = **/*.sh
+
+[docker]
+bears = DockerfileLintBear
+files = **/Dockerfile
+
+[cpp]
+bears = CPPLintBear,ClangFormatBear
+files = **/*.c, **/*.cpp, **/*.h
+
+[go]
+bears = GoVetBear,GoLintBear
+files = **/*.go
+
+[rust]
+bears = RustfmtBear,CargoCheckBear
+files = **/*.rs
+
+[all]
+apply_autofixes = true
