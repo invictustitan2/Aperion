@@ -2,8 +2,7 @@
 
 from typing import Any, Dict, Iterator
 
-from . import (auth, cookies, exceptions, hooks, status_codes,
-               structures, utils)
+from . import auth, cookies, exceptions, hooks, status_codes, structures, utils
 from .packages.urllib3 import exceptions as urllib3_exceptions
 from .packages.urllib3 import fields, filepost, util
 
@@ -63,8 +62,19 @@ class Request(RequestHooksMixin):
     params = ...  # type: Any
     auth = ...  # type: Any
     cookies = ...  # type: Any
-    def __init__(self, method=..., url=..., headers=..., files=..., data=..., params=...,
-                 auth=..., cookies=..., hooks=..., json=...): ...
+    def __init__(
+        self,
+        method=...,
+        url=...,
+        headers=...,
+        files=...,
+        data=...,
+        params=...,
+        auth=...,
+        cookies=...,
+        hooks=...,
+        json=...,
+    ): ...
     def prepare(self): ...
 
 class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
@@ -74,8 +84,19 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
     body = ...  # type: Any
     hooks = ...  # type: Any
     def __init__(self) -> None: ...
-    def prepare(self, method=..., url=..., headers=..., files=..., data=..., params=...,
-                auth=..., cookies=..., hooks=..., json=...): ...
+    def prepare(
+        self,
+        method=...,
+        url=...,
+        headers=...,
+        files=...,
+        data=...,
+        params=...,
+        auth=...,
+        cookies=...,
+        hooks=...,
+        json=...,
+    ): ...
     def copy(self): ...
     def prepare_method(self, method): ...
     def prepare_url(self, url, params): ...
@@ -110,8 +131,9 @@ class Response:
     def is_permanent_redirect(self) -> bool: ...
     @property
     def apparent_encoding(self) -> str: ...
-    def iter_content(self, chunk_size: int = ...,
-                     decode_unicode: bool = ...) -> Iterator[Any]: ...
+    def iter_content(
+        self, chunk_size: int = ..., decode_unicode: bool = ...
+    ) -> Iterator[Any]: ...
     def iter_lines(self, chunk_size=..., decode_unicode=..., delimiter=...): ...
     @property
     def content(self) -> bytes: ...

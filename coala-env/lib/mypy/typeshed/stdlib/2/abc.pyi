@@ -1,6 +1,5 @@
 from typing import Any, Dict, Tuple
 
-
 # mypy has special processing for ABCMeta and abstractmethod.
 
 WeakSet = ...  # type: _weakrefset.WeakSet
@@ -17,7 +16,9 @@ class ABCMeta(type):
     _abc_negative_cache = ...  # type: _weakrefset.WeakSet
     _abc_negative_cache_version = ...  # type: int
     _abc_registry = ...  # type: _weakrefset.WeakSet
-    def __init__(self, name: str, bases: Tuple[type, ...], namespace: Dict[Any, Any]) -> None: ...
+    def __init__(
+        self, name: str, bases: Tuple[type, ...], namespace: Dict[Any, Any]
+    ) -> None: ...
     def __instancecheck__(cls: "ABCMeta", instance: Any) -> Any: ...
     def __subclasscheck__(cls: "ABCMeta", subclass: Any) -> Any: ...
     def _dump_registry(cls: "ABCMeta", *args: Any, **kwargs: Any) -> None: ...

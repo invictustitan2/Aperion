@@ -2,7 +2,6 @@
 
 # NOTE: These are incomplete!
 
-
 class LockType:
     def acquire(self) -> None: ...
     def release(self) -> None: ...

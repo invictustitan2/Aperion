@@ -15,9 +15,12 @@ import subprocess
 import sys
 
 parser = argparse.ArgumentParser(description="Pytype tests.")
-parser.add_argument('-n', '--dry-run', action='store_true', help="Don't actually run tests")
-parser.add_argument('--num-parallel', type=int, default=1,
-                    help="Number of test processes to spawn")
+parser.add_argument(
+    "-n", "--dry-run", action="store_true", help="Don't actually run tests"
+)
+parser.add_argument(
+    "--num-parallel", type=int, default=1, help="Number of test processes to spawn"
+)
 
 
 def main():
@@ -50,9 +53,8 @@ class PytdRun(object):
             self.results = (0, "", "")
         else:
             self.proc = subprocess.Popen(
-                ["pytd"] + args,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE)
+                ["pytd"] + args, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            )
 
     def communicate(self):
         if self.results:
@@ -97,7 +99,7 @@ def pytype_test(args):
         runs += 1
 
         if code:
-            print("pytd error processing \"%s\":" % test_run.args[0])
+            print('pytd error processing "%s":' % test_run.args[0])
             print(stderr)
             errors += 1
 
@@ -105,5 +107,5 @@ def pytype_test(args):
     return max_code, runs
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

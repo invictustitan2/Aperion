@@ -1,11 +1,19 @@
-from typing import (Any, Awaitable, Callable, Generator, Generic, Iterable,
-                    TypeVar, Union)
+from typing import (
+    Any,
+    Awaitable,
+    Callable,
+    Generator,
+    Generic,
+    Iterable,
+    TypeVar,
+    Union,
+)
 
 from .events import AbstractEventLoop
 
-__all__ = ... # type: str
+__all__ = ...  # type: str
 
-_T = TypeVar('_T')
+_T = TypeVar("_T")
 
 from concurrent.futures import CancelledError as CancelledError
 from concurrent.futures import TimeoutError as TimeoutError
@@ -14,9 +22,9 @@ from concurrent.futures._base import Error as Error
 class InvalidStateError(Error): ...
 
 class _TracebackLogger:
-    __slots__ = ... # type: List[str]
+    __slots__ = ...  # type: List[str]
     exc = ...  # type: BaseException
-    tb = ... # type: List[str]
+    tb = ...  # type: List[str]
     def __init__(self, exc: Any, loop: AbstractEventLoop) -> None: ...
     def activate(self) -> None: ...
     def clear(self) -> None: ...
@@ -24,7 +32,7 @@ class _TracebackLogger:
 
 class Future(Iterable[_T], Awaitable[_T], Generic[_T]):
     _state = ...  # type: str
-    _exception = ... # type: BaseException
+    _exception = ...  # type: BaseException
     _blocking = False
     _log_traceback = False
     _tb_logger = _TracebackLogger

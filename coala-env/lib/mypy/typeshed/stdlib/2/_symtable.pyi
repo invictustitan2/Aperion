@@ -1,4 +1,3 @@
-
 CELL = ...  # type: int
 DEF_BOUND = ...  # type: int
 DEF_FREE = ...  # type: int
@@ -21,8 +20,7 @@ TYPE_FUNCTION = ...  # type: int
 TYPE_MODULE = ...  # type: int
 USE = ...  # type: int
 
-class _symtable_entry(object):
-    ...
+class _symtable_entry(object): ...
 
 class symtable(object):
     children = ...  # type: List[_symtable_entry]
@@ -36,5 +34,3 @@ class symtable(object):
     varnames = ...  # type: List[str]
 
     def __init__(self, src: str, filename: str, startstr: str) -> None: ...
-
-

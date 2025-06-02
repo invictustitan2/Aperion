@@ -42,8 +42,7 @@ from asyncio.streams import StreamWriter as StreamWriter
 from asyncio.streams import open_connection as open_connection
 from asyncio.streams import start_server as start_server
 from asyncio.subprocess import create_subprocess_exec as create_subprocess_exec
-from asyncio.subprocess import \
-    create_subprocess_shell as create_subprocess_shell
+from asyncio.subprocess import create_subprocess_shell as create_subprocess_shell
 from asyncio.tasks import ALL_COMPLETED as ALL_COMPLETED
 from asyncio.tasks import FIRST_COMPLETED as FIRST_COMPLETED
 from asyncio.tasks import FIRST_EXCEPTION as FIRST_EXCEPTION
@@ -67,10 +66,10 @@ from asyncio.transports import WriteTransport as WriteTransport
 # currently disallows this.
 # See https://github.com/python/mypy/issues/1843
 SelectorEventLoop = ...  # type: Type[AbstractEventLoop]
-if sys.platform == 'win32':
+if sys.platform == "win32":
     ProactorEventLoop = ...  # type: Type[AbstractEventLoop]
 DefaultEventLoopPolicy = ...  # type: Type[AbstractEventLoopPolicy]
 
 # TODO: AbstractChildWatcher (UNIX only)
 
-__all__ = ... # type: str
+__all__ = ...  # type: str

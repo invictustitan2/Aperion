@@ -11,7 +11,6 @@ def S_ISREG(mode: int) -> bool: ...
 def S_ISFIFO(mode: int) -> bool: ...
 def S_ISLNK(mode: int) -> bool: ...
 def S_ISSOCK(mode: int) -> bool: ...
-
 def S_IMODE(mode: int) -> int: ...
 def S_IFMT(mode: int) -> int: ...
 
@@ -62,9 +61,9 @@ UF_IMMUTABLE = 0
 UF_APPEND = 0
 UF_OPAQUE = 0
 UF_NOUNLINK = 0
-if sys.platform == 'darwin':
-   UF_COMPRESSED = 0 # OS X 10.6+ only
-   UF_HIDDEN = 0     # OX X 10.5+ only
+if sys.platform == "darwin":
+    UF_COMPRESSED = 0  # OS X 10.6+ only
+    UF_HIDDEN = 0  # OX X 10.5+ only
 SF_ARCHIVED = 0
 SF_IMMUTABLE = 0
 SF_APPEND = 0

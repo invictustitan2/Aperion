@@ -63,8 +63,16 @@ class DictReader(Iterable):
     dialect = ...  # type: _Dialect
     line_num = ...  # type: int
     fieldnames = ...  # type: Sequence[Any]
-    def __init__(self, f: Iterable[str], fieldnames: Sequence[Any] = ..., restkey=...,
-                 restval=..., dialect: _Dialect = ..., *args, **kwds) -> None: ...
+    def __init__(
+        self,
+        f: Iterable[str],
+        fieldnames: Sequence[Any] = ...,
+        restkey=...,
+        restval=...,
+        dialect: _Dialect = ...,
+        *args,
+        **kwds
+    ) -> None: ...
     def __iter__(self): ...
     def __next__(self): ...
 
@@ -75,8 +83,16 @@ class DictWriter:
     restval = ...  # type: Any
     extrasaction = ...  # type: Any
     writer = ...  # type: Any
-    def __init__(self, f: Any, fieldnames: Sequence[Any], restval=..., extrasaction: str = ...,
-                 dialect: _Dialect = ..., *args, **kwds) -> None: ...
+    def __init__(
+        self,
+        f: Any,
+        fieldnames: Sequence[Any],
+        restval=...,
+        extrasaction: str = ...,
+        dialect: _Dialect = ...,
+        *args,
+        **kwds
+    ) -> None: ...
     def writeheader(self) -> None: ...
     def writerow(self, rowdict: _DictRow) -> None: ...
     def writerows(self, rowdicts: Iterable[_DictRow]) -> None: ...

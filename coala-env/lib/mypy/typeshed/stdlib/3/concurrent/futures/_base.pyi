@@ -1,24 +1,33 @@
 from collections import namedtuple
-from typing import (Any, Callable, Generic, Iterable, Iterator, Optional, Set,
-                    Tuple, TypeVar)
+from typing import (
+    Any,
+    Callable,
+    Generic,
+    Iterable,
+    Iterator,
+    Optional,
+    Set,
+    Tuple,
+    TypeVar,
+)
 
-FIRST_COMPLETED = ... # type: Any
-FIRST_EXCEPTION = ... # type: Any
-ALL_COMPLETED = ... # type: Any
-PENDING = ... # type: Any
-RUNNING = ... # type: Any
-CANCELLED = ... # type: Any
-CANCELLED_AND_NOTIFIED = ... # type: Any
-FINISHED = ... # type: Any
-LOGGER = ... # type: Any
+FIRST_COMPLETED = ...  # type: Any
+FIRST_EXCEPTION = ...  # type: Any
+ALL_COMPLETED = ...  # type: Any
+PENDING = ...  # type: Any
+RUNNING = ...  # type: Any
+CANCELLED = ...  # type: Any
+CANCELLED_AND_NOTIFIED = ...  # type: Any
+FINISHED = ...  # type: Any
+LOGGER = ...  # type: Any
 
 class Error(Exception): ...
 class CancelledError(Error): ...
 class TimeoutError(Error): ...
 
-DoneAndNotDoneFutures = namedtuple('DoneAndNotDoneFutures', 'done not_done')
+DoneAndNotDoneFutures = namedtuple("DoneAndNotDoneFutures", "done not_done")
 
-_T = TypeVar('_T')
+_T = TypeVar("_T")
 
 class Future(Generic[_T]):
     def __init__(self) -> None: ...
@@ -34,12 +43,23 @@ class Future(Generic[_T]):
     def set_exception(self, exception: Exception) -> None: ...
 
 class Executor:
-    def submit(self, fn: Callable[..., _T], *args: Any, **kwargs: Any) -> Future[_T]: ...
-    def map(self, func: Callable[..., _T], *iterables: Any, timeout: Optional[float] = ..., chunksize: int = ...) -> Iterable[_T]: ...
+    def submit(
+        self, fn: Callable[..., _T], *args: Any, **kwargs: Any
+    ) -> Future[_T]: ...
+    def map(
+        self,
+        func: Callable[..., _T],
+        *iterables: Any,
+        timeout: Optional[float] = ...,
+        chunksize: int = ...
+    ) -> Iterable[_T]: ...
     def shutdown(self, wait: bool = ...) -> None: ...
     def __enter__(self) -> Executor: ...
     def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> bool: ...
 
-def as_completed(fs: Iterable[Future], timeout: Optional[float] = ...) -> Iterator[Future]: ...
-
-def wait(fs: Iterable[Future], timeout: Optional[float] = ..., return_when: str = ...) -> Tuple[Set[Future], Set[Future]]: ...
+def as_completed(
+    fs: Iterable[Future], timeout: Optional[float] = ...
+) -> Iterator[Future]: ...
+def wait(
+    fs: Iterable[Future], timeout: Optional[float] = ..., return_when: str = ...
+) -> Tuple[Set[Future], Set[Future]]: ...

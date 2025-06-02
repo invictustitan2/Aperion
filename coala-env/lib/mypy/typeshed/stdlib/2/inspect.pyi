@@ -3,17 +3,21 @@ from types import FrameType, ModuleType, TracebackType
 from typing import Any, Callable, List, NamedTuple, Optional, Tuple, Union
 
 # Types and members
-ModuleInfo = NamedTuple('ModuleInfo', [('name', str),
-                                       ('suffix', str),
-                                       ('mode', str),
-                                       ('module_type', int),
-                                       ])
-def getmembers(object: object,
-               predicate: Callable[[Any], bool] = ...
-              ) -> List[Tuple[str, Any]]: ...
+ModuleInfo = NamedTuple(
+    "ModuleInfo",
+    [
+        ("name", str),
+        ("suffix", str),
+        ("mode", str),
+        ("module_type", int),
+    ],
+)
+
+def getmembers(
+    object: object, predicate: Callable[[Any], bool] = ...
+) -> List[Tuple[str, Any]]: ...
 def getmoduleinfo(path: str) -> Optional[ModuleInfo]: ...
 def getmodulename(path: str) -> Optional[str]: ...
-
 def ismodule(object: object) -> bool: ...
 def isclass(object: object) -> bool: ...
 def ismethod(object: object) -> bool: ...
@@ -37,9 +41,11 @@ def getcomments(object: object) -> str: ...
 def getfile(object: object) -> str: ...
 def getmodule(object: object) -> ModuleType: ...
 def getsourcefile(object: object) -> str: ...
+
 # TODO restrict to "module, class, method, function, traceback, frame,
 # or code object"
 def getsourcelines(object: object) -> Tuple[List[str], int]: ...
+
 # TODO restrict to "a module, class, method, function, traceback, frame,
 # or code object"
 def getsource(object: object) -> str: ...
@@ -49,35 +55,47 @@ def cleandoc(doc: str) -> str: ...
 # TODO make the return type more specific
 def getclasstree(classes: List[type], unique: bool = ...) -> Any: ...
 
-ArgSpec = NamedTuple('ArgSpec', [('args', List[str]),
-                                 ('varargs', str),
-                                 ('keywords', str),
-                                 ('defaults', tuple),
-                                 ])
+ArgSpec = NamedTuple(
+    "ArgSpec",
+    [
+        ("args", List[str]),
+        ("varargs", str),
+        ("keywords", str),
+        ("defaults", tuple),
+    ],
+)
 
 def getargspec(func: object) -> ArgSpec: ...
+
 # TODO make the return type more specific
 def getargvalues(frame: FrameType) -> Any: ...
+
 # TODO formatargspec
 # TODO formatargvalues
 def getmro(cls: type) -> Tuple[type, ...]: ...
+
 # TODO getcallargs
 
 # The interpreter stack
 
-Traceback = NamedTuple('Traceback', [('filename', str),
-                                     ('lineno', int),
-                                     ('function', str),
-                                     ('code_context', List[str]),
-                                     ('index', int),
-                                    ])
+Traceback = NamedTuple(
+    "Traceback",
+    [
+        ("filename", str),
+        ("lineno", int),
+        ("function", str),
+        ("code_context", List[str]),
+        ("index", int),
+    ],
+)
 
 _FrameRecord = Tuple[FrameType, str, int, str, List[str], int]
 
 def getouterframes(frame: FrameType, context: int = ...) -> List[FrameType]: ...
-def getframeinfo(frame: Union[FrameType, TracebackType] , context: int = ...) -> Traceback: ...
+def getframeinfo(
+    frame: Union[FrameType, TracebackType], context: int = ...
+) -> Traceback: ...
 def getinnerframes(traceback: TracebackType, context: int = ...) -> List[FrameType]: ...
-
 def currentframe() -> FrameType: ...
 def stack(context: int = ...) -> List[_FrameRecord]: ...
 def trace(context: int = ...) -> List[_FrameRecord]: ...

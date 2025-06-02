@@ -2,4 +2,3 @@
 # See https://github.com/o11c/stubtool
 #
 # Stubs for six.moves.urllib (Python 3.2)
-

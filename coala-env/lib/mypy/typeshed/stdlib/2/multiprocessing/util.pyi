@@ -4,8 +4,8 @@
 
 import threading
 
-SUBDEBUG = ... # type: Any
-SUBWARNING = ... # type: Any
+SUBDEBUG = ...  # type: Any
+SUBWARNING = ...  # type: Any
 
 def sub_debug(msg, *args): ...
 def debug(msg, *args): ...

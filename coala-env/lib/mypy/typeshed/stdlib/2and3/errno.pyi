@@ -1,7 +1,6 @@
 # Stubs for errno
 
-
-errorcode = ... # type: Mapping[int, str]
+errorcode = ...  # type: Mapping[int, str]
 
 EPERM = ...  # type: int
 ENOENT = ...  # type: int

@@ -2,10 +2,10 @@
 echo "🔧 Lint & Format script starting..."
 
 # Setup test files
-echo -e "def BADstyle():\n  print( 'bad' )\n\n  \n  \n  \n\n  " > test_bad.py
-echo "<html><body><h1>Title</h1></body></html>" > test_bad.html
-echo "body { color: red; }" > test_bad.css
-echo "function badStyle(){console.log('bad');}" > test_bad.js
+echo -e "def BADstyle():\n  print( 'bad' )\n\n  \n  \n  \n\n  " >test_bad.py
+echo "<html><body><h1>Title</h1></body></html>" >test_bad.html
+echo "body { color: red; }" >test_bad.css
+echo "function badStyle(){console.log('bad');}" >test_bad.js
 
 # Lint & Format Python
 echo "🐍 Running pylint on test_bad.py..."

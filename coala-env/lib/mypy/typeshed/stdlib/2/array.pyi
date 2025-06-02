@@ -1,9 +1,21 @@
 """Stub file for the 'array' module."""
 
-from typing import (IO, Any, BinaryIO, Generic, Iterable, Iterator, List,
-                    Sequence, Tuple, TypeVar, Union, overload)
+from typing import (
+    IO,
+    Any,
+    BinaryIO,
+    Generic,
+    Iterable,
+    Iterator,
+    List,
+    Sequence,
+    Tuple,
+    TypeVar,
+    Union,
+    overload,
+)
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 class array(Generic[T]):
     def __init__(self, typecode: str, init: Iterable[T] = ...) -> None: ...
@@ -27,16 +39,17 @@ class array(Generic[T]):
     def __setitem__(self, i: int, y: T) -> None: ...
     @overload
     def __setitem__(self, i: slice, y: "array[T]") -> None: ...
-
     def append(self, x: T) -> None: ...
     def buffer_info(self) -> Tuple[int, int]: ...
     def byteswap(self) -> None:
         raise RuntimeError()
+
     def count(self) -> int: ...
     def extend(self, x: Sequence[T]) -> None: ...
     def fromlist(self, list: List[T]) -> None:
         raise EOFError()
         raise IOError()
+
     def fromfile(self, f: BinaryIO, n: int) -> None: ...
     def fromstring(self, s: str) -> None: ...
     def fromunicode(self, u: unicode) -> None: ...
@@ -45,10 +58,12 @@ class array(Generic[T]):
     def pop(self, i: int = ...) -> T: ...
     def read(self, f: IO[str], n: int) -> None:
         raise DeprecationWarning()
+
     def remove(self, x: T) -> None: ...
     def reverse(self) -> None: ...
     def tofile(self, f: BinaryIO) -> None:
         raise IOError()
+
     def tolist(self) -> List[T]: ...
     def tostring(self) -> str: ...
     def tounicode(self) -> unicode: ...

@@ -1,23 +1,39 @@
 # Stubs for inspect
 
 from types import FrameType, ModuleType, TracebackType
-from typing import (AbstractSet, Any, Callable, Dict, Generator, List, Mapping,
-                    NamedTuple, Optional, Sequence, Tuple)
+from typing import (
+    AbstractSet,
+    Any,
+    Callable,
+    Dict,
+    Generator,
+    List,
+    Mapping,
+    NamedTuple,
+    Optional,
+    Sequence,
+    Tuple,
+)
 
 #
 # Types and members
 #
-ModuleInfo = NamedTuple('ModuleInfo', [('name', str),
-                                       ('suffix', str),
-                                       ('mode', str),
-                                       ('module_type', int),
-                                       ])
-def getmembers(object: object,
-               predicate: Callable[[Any], bool] = ...,
-               ) -> List[Tuple[str, Any]]: ...
+ModuleInfo = NamedTuple(
+    "ModuleInfo",
+    [
+        ("name", str),
+        ("suffix", str),
+        ("mode", str),
+        ("module_type", int),
+    ],
+)
+
+def getmembers(
+    object: object,
+    predicate: Callable[[Any], bool] = ...,
+) -> List[Tuple[str, Any]]: ...
 def getmoduleinfo(path: str) -> Optional[ModuleInfo]: ...
 def getmodulename(path: str) -> Optional[str]: ...
-
 def ismodule(object: object) -> bool: ...
 def isclass(object: object) -> bool: ...
 def ismethod(object: object) -> bool: ...
@@ -29,7 +45,6 @@ def isgenerator(object: object) -> bool: ...
 def iscoroutinefunction(object: object) -> bool: ...
 def iscoroutine(object: object) -> bool: ...
 def isawaitable(object: object) -> bool: ...
-
 def istraceback(object: object) -> bool: ...
 def isframe(object: object) -> bool: ...
 def iscode(object: object) -> bool: ...
@@ -41,7 +56,6 @@ def isdatadescriptor(object: object) -> bool: ...
 def isgetsetdescriptor(object: object) -> bool: ...
 def ismemberdescriptor(object: object) -> bool: ...
 
-
 #
 # Retrieving source code
 #
@@ -50,27 +64,30 @@ def getcomments(object: object) -> str: ...
 def getfile(object: object) -> str: ...
 def getmodule(object: object) -> ModuleType: ...
 def getsourcefile(object: object) -> str: ...
+
 # TODO restrict to "module, class, method, function, traceback, frame,
 # or code object"
 def getsourcelines(object: object) -> Tuple[List[str], int]: ...
+
 # TODO restrict to "a module, class, method, function, traceback, frame,
 # or code object"
 def getsource(object: object) -> str: ...
 def cleandoc(doc: str) -> str: ...
 
-
 #
 # Introspecting callables with the Signature object (Python 3.3+)
 #
-def signature(callable: Callable[..., Any],
-              *,
-              follow_wrapped: bool = True) -> 'Signature': ...
+def signature(
+    callable: Callable[..., Any], *, follow_wrapped: bool = True
+) -> "Signature": ...
 
 class Signature:
-    def __init__(self,
-                 parameters: Optional[Sequence['Parameter']] = ...,
-                 *,
-                 return_annotation: Any = ...) -> None: ...
+    def __init__(
+        self,
+        parameters: Optional[Sequence["Parameter"]] = ...,
+        *,
+        return_annotation: Any = ...
+    ) -> None: ...
     # TODO: can we be more specific here?
     empty = ...  # type: object
 
@@ -79,30 +96,34 @@ class Signature:
     # TODO: can we be more specific here?
     return_annotation = ...  # type: Any
 
-    def bind(self, *args: Any, **kwargs: Any) -> 'BoundArguments': ...
-    def bind_partial(self, *args: Any, **kwargs: Any) -> 'BoundArguments': ...
-    def replace(self,
-                *,
-                parameters: Optional[Sequence['Parameter']] = ...,
-                return_annotation: Any = ...) -> 'Signature': ...
+    def bind(self, *args: Any, **kwargs: Any) -> "BoundArguments": ...
+    def bind_partial(self, *args: Any, **kwargs: Any) -> "BoundArguments": ...
+    def replace(
+        self,
+        *,
+        parameters: Optional[Sequence["Parameter"]] = ...,
+        return_annotation: Any = ...
+    ) -> "Signature": ...
 
     # Python 3.5+
     @classmethod
-    def from_callable(cls,
-                      obj: Callable[..., Any],
-                      *,
-                      follow_wrapped: bool = True) -> 'Signature': ...
+    def from_callable(
+        cls, obj: Callable[..., Any], *, follow_wrapped: bool = True
+    ) -> "Signature": ...
 
 # The name is the same as the enum's name in CPython
-class _ParameterKind: pass
+class _ParameterKind:
+    pass
 
 class Parameter:
-    def __init__(self,
-                 name: str,
-                 kind: _ParameterKind,
-                 *,
-                 default: Any = ...,
-                 annotation: Any = ...) -> None: ...
+    def __init__(
+        self,
+        name: str,
+        kind: _ParameterKind,
+        *,
+        default: Any = ...,
+        annotation: Any = ...
+    ) -> None: ...
     empty = ...  # type: Any
     name = ...  # type: str
     default = ...  # type: Any
@@ -115,12 +136,14 @@ class Parameter:
     KEYWORD_ONLY = ...  # type: _ParameterKind
     VAR_KEYWORD = ...  # type: _ParameterKind
 
-    def replace(self,
-                *,
-                name: Optional[str] = ...,
-                kind: Optional[_ParameterKind] = ...,
-                default: Any = ...,
-                annotation: Any = ...) -> 'Parameter': ...
+    def replace(
+        self,
+        *,
+        name: Optional[str] = ...,
+        kind: Optional[_ParameterKind] = ...,
+        default: Any = ...,
+        annotation: Any = ...
+    ) -> "Parameter": ...
 
 class BoundArguments:
     arguments = ...  # type: MutableMapping[str, Any]
@@ -131,7 +154,6 @@ class BoundArguments:
     # Python 3.5+
     def apply_defaults(self) -> None: ...
 
-
 #
 # Classes and functions
 #
@@ -141,96 +163,114 @@ class BoundArguments:
 # _ClassTreeItem = Union[List['_ClassTreeItem'], Tuple[type, Tuple[type, ...]]]
 def getclasstree(classes: List[type], unique: bool = ...) -> Any: ...
 
-ArgSpec = NamedTuple('ArgSpec', [('args', List[str]),
-                                 ('varargs', str),
-                                 ('keywords', str),
-                                 ('defaults', tuple),
-                                 ])
+ArgSpec = NamedTuple(
+    "ArgSpec",
+    [
+        ("args", List[str]),
+        ("varargs", str),
+        ("keywords", str),
+        ("defaults", tuple),
+    ],
+)
 
 def getargspec(func: object) -> ArgSpec: ...
 
-FullArgSpec = NamedTuple('FullArgSpec', [('args', List[str]),
-                                         ('varargs', str),
-                                         ('varkw', str),
-                                         ('defaults', tuple),
-                                         ('kwonlyargs', List[str]),
-                                         ('kwonlydefaults', Dict[str, Any]),
-                                         ('annotations', Dict[str, Any]),
-                                         ])
+FullArgSpec = NamedTuple(
+    "FullArgSpec",
+    [
+        ("args", List[str]),
+        ("varargs", str),
+        ("varkw", str),
+        ("defaults", tuple),
+        ("kwonlyargs", List[str]),
+        ("kwonlydefaults", Dict[str, Any]),
+        ("annotations", Dict[str, Any]),
+    ],
+)
 
 def getfullargspec(func: object) -> FullArgSpec: ...
 
 # TODO make the field types more specific here
-ArgInfo = NamedTuple('ArgInfo', [('args', List[str]),
-                                 ('varargs', Optional[str]),
-                                 ('keywords', Optional[str]),
-                                 ('locals', Dict[str, Any]),
-                                 ])
+ArgInfo = NamedTuple(
+    "ArgInfo",
+    [
+        ("args", List[str]),
+        ("varargs", Optional[str]),
+        ("keywords", Optional[str]),
+        ("locals", Dict[str, Any]),
+    ],
+)
 
 def getargvalues(frame: FrameType) -> ArgInfo: ...
-def formatargspec(args: List[str],
-                  varargs: Optional[str] = ...,
-                  varkw: Optional[str] = ...,
-                  defaults: Optional[Tuple[Any]] = ...,
-                  kwonlyargs: Optional[List[str]] = ...,
-                  kwonlydefaults: Optional[Dict[str, Any]] = ...,
-                  annotations: Optional[Dict[str, Any]] = ...,
-                  formatarg: Optional[Callable[[str], str]] = ...,
-                  formatvarargs: Optional[Callable[[str], str]] = ...,
-                  formatvarkw: Optional[Callable[[str], str]] = ...,
-                  formatvalue: Optional[Callable[[Any], str]] = ...,
-                  formatreturns: Optional[Callable[[Any], str]] = ...,
-                  formatannotations: Optional[Callable[[Any], str]] = ...,
-                  ) -> str: ...
-def formatargvalues(args: List[str],
-                    varargs: Optional[str] = ...,
-                    varkw: Optional[str] = ...,
-                    locals: Optional[Dict[str, Any]] = ...,
-                    formatarg: Optional[Callable[[str], str]] = ...,
-                    formatvarargs: Optional[Callable[[str], str]] = ...,
-                    formatvarkw: Optional[Callable[[str], str]] = ...,
-                    formatvalue: Optional[Callable[[Any], str]] = ...,
-                    ) -> str: ...
+def formatargspec(
+    args: List[str],
+    varargs: Optional[str] = ...,
+    varkw: Optional[str] = ...,
+    defaults: Optional[Tuple[Any]] = ...,
+    kwonlyargs: Optional[List[str]] = ...,
+    kwonlydefaults: Optional[Dict[str, Any]] = ...,
+    annotations: Optional[Dict[str, Any]] = ...,
+    formatarg: Optional[Callable[[str], str]] = ...,
+    formatvarargs: Optional[Callable[[str], str]] = ...,
+    formatvarkw: Optional[Callable[[str], str]] = ...,
+    formatvalue: Optional[Callable[[Any], str]] = ...,
+    formatreturns: Optional[Callable[[Any], str]] = ...,
+    formatannotations: Optional[Callable[[Any], str]] = ...,
+) -> str: ...
+def formatargvalues(
+    args: List[str],
+    varargs: Optional[str] = ...,
+    varkw: Optional[str] = ...,
+    locals: Optional[Dict[str, Any]] = ...,
+    formatarg: Optional[Callable[[str], str]] = ...,
+    formatvarargs: Optional[Callable[[str], str]] = ...,
+    formatvarkw: Optional[Callable[[str], str]] = ...,
+    formatvalue: Optional[Callable[[Any], str]] = ...,
+) -> str: ...
 def getmro(cls: type) -> Tuple[type, ...]: ...
 
 # Python 3.2+
-def getcallargs(func: Callable[..., Any],
-                *args: Any,
-                **kwds: Any) -> Dict[str, Any]: ...
-
+def getcallargs(
+    func: Callable[..., Any], *args: Any, **kwds: Any
+) -> Dict[str, Any]: ...
 
 # Python 3.3+
-ClosureVars = NamedTuple('ClosureVars', [('nonlocals', Mapping[str, Any]),
-                                         ('globals', Mapping[str, Any]),
-                                         ('builtins', Mapping[str, Any]),
-                                         ('unbound', AbstractSet[str]),
-                                         ])
+ClosureVars = NamedTuple(
+    "ClosureVars",
+    [
+        ("nonlocals", Mapping[str, Any]),
+        ("globals", Mapping[str, Any]),
+        ("builtins", Mapping[str, Any]),
+        ("unbound", AbstractSet[str]),
+    ],
+)
+
 def getclosurevars(func: Callable[..., Any]) -> ClosureVars: ...
 
 # Python 3.4+
-def unwrap(func: Callable[..., Any],
-           *,
-           stop: Callable[[Any], Any]) -> Any: ...
-
+def unwrap(func: Callable[..., Any], *, stop: Callable[[Any], Any]) -> Any: ...
 
 #
 # The interpreter stack
 #
 
 # Python 3.5+ (functions returning it used to return regular tuples)
-FrameInfo = NamedTuple('FrameInfo', [('frame', FrameType),
-                                     ('filename', str),
-                                     ('lineno', int),
-                                     ('function', str),
-                                     ('code_context', List[str]),
-                                     ('index', int),
-                                     ])
+FrameInfo = NamedTuple(
+    "FrameInfo",
+    [
+        ("frame", FrameType),
+        ("filename", str),
+        ("lineno", int),
+        ("function", str),
+        ("code_context", List[str]),
+        ("index", int),
+    ],
+)
 
 # TODO make the frame type more specific
 def getframeinfo(frame: Any, context: int = 1) -> FrameInfo: ...
 def getouterframes(frame: Any, context: int = 1) -> List[FrameInfo]: ...
-def getinnerframes(traceback: TracebackType, context: int = 1) -> List[FrameInfo]:
-    ...
+def getinnerframes(traceback: TracebackType, context: int = 1) -> List[FrameInfo]: ...
 def currentframe() -> Optional[FrameType]: ...
 def stack(context: int = 1) -> List[FrameInfo]: ...
 def trace(context: int = 1) -> List[FrameInfo]: ...
@@ -241,7 +281,6 @@ def trace(context: int = 1) -> List[FrameInfo]: ...
 
 # Python 3.2+
 def getattr_static(obj: object, attr: str, default: Optional[Any] = ...) -> Any: ...
-
 
 #
 # Current State of Generators and Coroutines
@@ -255,6 +294,7 @@ GEN_CREATED = ...  # type: str
 GEN_RUNNING = ...  # type: str
 GEN_SUSPENDED = ...  # type: str
 GEN_CLOSED = ...  # type: str
+
 def getgeneratorstate(generator: Generator[Any, Any, Any]) -> str: ...
 
 # Python 3.5+
@@ -262,6 +302,7 @@ CORO_CREATED = ...  # type: str
 CORO_RUNNING = ...  # type: str
 CORO_SUSPENDED = ...  # type: str
 CORO_CLOSED = ...  # type: str
+
 # TODO can we be more specific than "object"?
 def getcoroutinestate(coroutine: object) -> str: ...
 
@@ -271,7 +312,6 @@ def getgeneratorlocals(generator: Generator[Any, Any, Any]) -> Dict[str, Any]: .
 # Python 3.5+
 # TODO can we be more specific than "object"?
 def getcoroutinelocals(coroutine: object) -> Dict[str, Any]: ...
-
 
 #
 # The following seems undocumented but it was already present in this file

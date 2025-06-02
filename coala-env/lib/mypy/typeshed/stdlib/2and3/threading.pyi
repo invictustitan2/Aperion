@@ -2,21 +2,21 @@
 
 import sys
 from types import FrameType, TracebackType
-from typing import (Any, Callable, List, Mapping, Optional, Tuple,
-                    Type, TypeVar, Union)
+from typing import Any, Callable, List, Mapping, Optional, Tuple, Type, TypeVar, Union
 
 # TODO recursive type
 _TF = Callable[[FrameType, str, Any], Optional[Callable[..., Any]]]
 
 _PF = Callable[[FrameType, str, Any], None]
-_T = TypeVar('_T')
-
+_T = TypeVar("_T")
 
 def active_count() -> int: ...
+
 if sys.version_info < (3,):
     def activeCount() -> int: ...
 
 def current_thread() -> Thread: ...
+
 if sys.version_info < (3,):
     def currentThread() -> Thread: ...
 
@@ -38,30 +38,36 @@ if sys.version_info >= (3,):
 if sys.version_info < (3,):
     class ThreadError(Exception): ...
 
-
 # TODO: Change to a class with __getattr__ and __setattr__
 # once mypy supports universal __setattr__.
 # See https://github.com/python/mypy/issues/521
 local = ...  # type: Any
-
 
 class Thread:
     name = ...  # type: str
     ident = ...  # type: Optional[int]
     daemon = ...  # type: bool
     if sys.version_info >= (3,):
-        def __init__(self, group: None = ...,
-                     target: Optional[Callable[..., None]] = ...,
-                     name: Optional[str] = ...,
-                     args: Tuple[Any, ...] = ...,
-                     kwargs: Mapping[str, Any] = ...,
-                     *, daemon: Optional[bool] = ...) -> None: ...
+        def __init__(
+            self,
+            group: None = ...,
+            target: Optional[Callable[..., None]] = ...,
+            name: Optional[str] = ...,
+            args: Tuple[Any, ...] = ...,
+            kwargs: Mapping[str, Any] = ...,
+            *,
+            daemon: Optional[bool] = ...
+        ) -> None: ...
     else:
-        def __init__(self, group: None = ...,
-                     target: Optional[Callable[..., None]] = ...,
-                     name: Optional[str] = ...,
-                     args: Tuple[Any, ...] = ...,
-                     kwargs: Mapping[str, Any] = ...) -> None: ...
+        def __init__(
+            self,
+            group: None = ...,
+            target: Optional[Callable[..., None]] = ...,
+            name: Optional[str] = ...,
+            args: Tuple[Any, ...] = ...,
+            kwargs: Mapping[str, Any] = ...,
+        ) -> None: ...
+
     def start(self) -> None: ...
     def run(self) -> None: ...
     def join(self, timeout: Optional[float] = ...) -> None: ...
@@ -70,118 +76,146 @@ class Thread:
     def is_alive(self) -> bool: ...
     if sys.version_info < (3,):
         def isAlive(self) -> bool: ...
+
     def isDaemon(self) -> bool: ...
     def setDaemon(self, daemonic: bool) -> None: ...
-
 
 class _DummyThread(Thread):
     pass
 
-
 class Lock:
     def __init__(self) -> None: ...
     def __enter__(self) -> bool: ...
-    def __exit__(self, exc_type: Optional[Type[BaseException]],
-                 exc_val: Optional[Exception],
-                 exc_tb: Optional[TracebackType]) -> bool: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[Exception],
+        exc_tb: Optional[TracebackType],
+    ) -> bool: ...
     if sys.version_info >= (3,):
         def acquire(self, blocking: bool = ..., timeout: int = ...) -> bool: ...
     else:
         def acquire(self, blocking: bool = ...) -> bool: ...
+
     def release(self) -> None: ...
     def locked(self) -> bool: ...
-
 
 class _RLock:
     def __init__(self) -> None: ...
     def __enter__(self) -> bool: ...
-    def __exit__(self, exc_type: Optional[Type[BaseException]],
-                 exc_val: Optional[Exception],
-                 exc_tb: Optional[TracebackType]) -> bool: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[Exception],
+        exc_tb: Optional[TracebackType],
+    ) -> bool: ...
     if sys.version_info >= (3,):
         def acquire(self, blocking: bool = ..., timeout: int = ...) -> bool: ...
     else:
         def acquire(self, blocking: bool = ...) -> bool: ...
+
     def release(self) -> None: ...
 
-
 RLock = _RLock
-
 
 class Condition:
     def __init__(self, lock: Union[Lock, _RLock, None] = ...) -> None: ...
     def __enter__(self) -> bool: ...
-    def __exit__(self, exc_type: Optional[Type[BaseException]],
-                 exc_val: Optional[Exception],
-                 exc_tb: Optional[TracebackType]) -> bool: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[Exception],
+        exc_tb: Optional[TracebackType],
+    ) -> bool: ...
     if sys.version_info >= (3,):
         def acquire(self, blocking: bool = ..., timeout: int = ...) -> bool: ...
     else:
         def acquire(self, blocking: bool = ...) -> bool: ...
+
     def release(self) -> None: ...
     def wait(self, timeout: Optional[float] = ...) -> bool: ...
     if sys.version_info >= (3,):
-        def wait_for(self, predicate: Callable[[], _T],
-                     timeout: Optional[float]) -> _T: ...
+        def wait_for(
+            self, predicate: Callable[[], _T], timeout: Optional[float]
+        ) -> _T: ...
+
     def notify(self, n: int = ...) -> None: ...
     def notify_all(self) -> None: ...
     def notifyAll(self) -> None: ...
 
-
 class Semaphore:
     def __init__(self, value: int = ...) -> None: ...
     def __enter__(self) -> bool: ...
-    def __exit__(self, exc_type: Optional[Type[BaseException]],
-                 exc_val: Optional[Exception],
-                 exc_tb: Optional[TracebackType]) -> bool: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[Exception],
+        exc_tb: Optional[TracebackType],
+    ) -> bool: ...
     if sys.version_info >= (3,):
         def acquire(self, blocking: bool = ..., timeout: int = ...) -> bool: ...
     else:
         def acquire(self, blocking: bool = ...) -> bool: ...
+
     def release(self) -> None: ...
 
 class BoundedSemaphore:
     def __init__(self, value: int = ...) -> None: ...
     def __enter__(self) -> bool: ...
-    def __exit__(self, exc_type: Optional[Type[BaseException]],
-                 exc_val: Optional[Exception],
-                 exc_tb: Optional[TracebackType]) -> bool: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[Exception],
+        exc_tb: Optional[TracebackType],
+    ) -> bool: ...
     if sys.version_info >= (3,):
         def acquire(self, blocking: bool = ..., timeout: int = ...) -> bool: ...
     else:
         def acquire(self, blocking: bool = ...) -> bool: ...
-    def release(self) -> None: ...
 
+    def release(self) -> None: ...
 
 class Event:
     def __init__(self) -> None: ...
     def is_set(self) -> bool: ...
     if sys.version_info < (3,):
         def isSet(self) -> bool: ...
+
     def set(self) -> None: ...
     def clear(self) -> None: ...
     def wait(self, timeout: Optional[float] = ...) -> bool: ...
 
-
 class Timer(Thread):
     if sys.version_info >= (3,):
-        def __init__(self, interval: float, function: Callable[..., None],
-                     args: Optional[List[Any]] = ...,
-                     kwargs: Optional[Mapping[str, Any]] = ...) -> None: ...
+        def __init__(
+            self,
+            interval: float,
+            function: Callable[..., None],
+            args: Optional[List[Any]] = ...,
+            kwargs: Optional[Mapping[str, Any]] = ...,
+        ) -> None: ...
     else:
-        def __init__(self, interval: float, function: Callable[..., None],
-                     args: List[Any] = ...,
-                     kwargs: Mapping[str, Any] = ...) -> None: ...
-    def cancel(self) -> None: ...
+        def __init__(
+            self,
+            interval: float,
+            function: Callable[..., None],
+            args: List[Any] = ...,
+            kwargs: Mapping[str, Any] = ...,
+        ) -> None: ...
 
+    def cancel(self) -> None: ...
 
 if sys.version_info >= (3,):
     class Barrier:
         parties = ...  # type: int
         n_waiting = ...  # type: int
         broken = ...  # type: bool
-        def __init__(self, parties: int, action: Optional[Callable[[], None]] = ...,
-                     timeout: Optional[float] = ...) -> None: ...
+        def __init__(
+            self,
+            parties: int,
+            action: Optional[Callable[[], None]] = ...,
+            timeout: Optional[float] = ...,
+        ) -> None: ...
         def wait(self, timeout: Optional[float] = ...) -> int: ...
         def reset(self) -> None: ...
         def abort(self) -> None: ...

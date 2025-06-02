@@ -2,23 +2,37 @@
 
 import sys
 from types import TracebackType
-from typing import (IO, Any, Callable, Generic, Iterable, Iterator,
-                    Optional, Type, TypeVar)
+from typing import (
+    IO,
+    Any,
+    Callable,
+    Generic,
+    Iterable,
+    Iterator,
+    Optional,
+    Type,
+    TypeVar,
+)
 
-_T = TypeVar('_T')
-_ExitFunc = Callable[[Optional[Type[BaseException]],
-                      Optional[Exception],
-                      Optional[TracebackType]], bool]
-_CM_EF = TypeVar('_CM_EF', ContextManager, _ExitFunc)
+_T = TypeVar("_T")
+_ExitFunc = Callable[
+    [Optional[Type[BaseException]], Optional[Exception], Optional[TracebackType]], bool
+]
+_CM_EF = TypeVar("_CM_EF", ContextManager, _ExitFunc)
 
 # TODO already in PEP, have to get added to mypy
 class ContextManager(Generic[_T]):
     def __enter__(self) -> _T: ...
-    def __exit__(self, exc_type: Optional[Type[BaseException]],
-                 exc_val: Optional[Exception],
-                 exc_tb: Optional[TracebackType]) -> bool: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[Exception],
+        exc_tb: Optional[TracebackType],
+    ) -> bool: ...
 
-def contextmanager(func: Callable[..., Iterator[_T]]) -> Callable[..., ContextManager[_T]]: ...
+def contextmanager(
+    func: Callable[..., Iterator[_T]]
+) -> Callable[..., ContextManager[_T]]: ...
 
 if sys.version_info < (3,):
     def nested(*mgr: ContextManager[Any]) -> ContextManager[Iterable[Any]]: ...
@@ -39,13 +53,16 @@ if sys.version_info >= (3, 5):
 
 if sys.version_info >= (3,):
     class ContextDecorator:
-        def __call__(self, func: Callable[..., None]) -> Callable[..., ContextManager[None]]: ...
+        def __call__(
+            self, func: Callable[..., None]
+        ) -> Callable[..., ContextManager[None]]: ...
 
     class ExitStack(ContextManager[ExitStack]):
         def __init__(self) -> None: ...
         def enter_context(self, cm: ContextManager[_T]) -> _T: ...
         def push(self, exit: _CM_EF) -> _CM_EF: ...
-        def callback(self, callback: Callable[..., None],
-                     *args: Any, **kwds: Any) -> Callable[..., None]: ...
+        def callback(
+            self, callback: Callable[..., None], *args: Any, **kwds: Any
+        ) -> Callable[..., None]: ...
         def pop_all(self) -> ExitStack: ...
         def close(self) -> None: ...

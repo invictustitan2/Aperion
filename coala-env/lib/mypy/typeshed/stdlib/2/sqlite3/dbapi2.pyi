@@ -5,76 +5,79 @@ from collections import Iterable
 from numbers import Integral
 from typing import Any, List, Union
 
-paramstyle = ... # type: str
-threadsafety = ... # type: int
-apilevel = ... # type: str
-Date = ... # type: datetime
-Time = ... # type: time
-Timestamp = ... # type: datetime
+paramstyle = ...  # type: str
+threadsafety = ...  # type: int
+apilevel = ...  # type: str
+Date = ...  # type: datetime
+Time = ...  # type: time
+Timestamp = ...  # type: datetime
 
 def DateFromTicks(ticks): ...
 def TimeFromTicks(ticks): ...
 def TimestampFromTicks(ticks): ...
 
-version_info = ... # type: Any
-sqlite_version_info = ... # type: Any
-Binary = ... # type: Any
+version_info = ...  # type: Any
+sqlite_version_info = ...  # type: Any
+Binary = ...  # type: Any
 
 def register_adapters_and_converters(): ...
 
 # The remaining definitions are imported from _sqlite3.
 
-PARSE_COLNAMES = ... # type: int
-PARSE_DECLTYPES = ... # type: int
-SQLITE_ALTER_TABLE = ... # type: int
-SQLITE_ANALYZE = ... # type: int
-SQLITE_ATTACH = ... # type: int
-SQLITE_CREATE_INDEX = ... # type: int
-SQLITE_CREATE_TABLE = ... # type: int
-SQLITE_CREATE_TEMP_INDEX = ... # type: int
-SQLITE_CREATE_TEMP_TABLE = ... # type: int
-SQLITE_CREATE_TEMP_TRIGGER = ... # type: int
-SQLITE_CREATE_TEMP_VIEW = ... # type: int
-SQLITE_CREATE_TRIGGER = ... # type: int
-SQLITE_CREATE_VIEW = ... # type: int
-SQLITE_DELETE = ... # type: int
-SQLITE_DENY = ... # type: int
-SQLITE_DETACH = ... # type: int
-SQLITE_DROP_INDEX = ... # type: int
-SQLITE_DROP_TABLE = ... # type: int
-SQLITE_DROP_TEMP_INDEX = ... # type: int
-SQLITE_DROP_TEMP_TABLE = ... # type: int
-SQLITE_DROP_TEMP_TRIGGER = ... # type: int
-SQLITE_DROP_TEMP_VIEW = ... # type: int
-SQLITE_DROP_TRIGGER = ... # type: int
-SQLITE_DROP_VIEW = ... # type: int
-SQLITE_IGNORE = ... # type: int
-SQLITE_INSERT = ... # type: int
-SQLITE_OK = ... # type: int
-SQLITE_PRAGMA = ... # type: int
-SQLITE_READ = ... # type: int
-SQLITE_REINDEX = ... # type: int
-SQLITE_SELECT = ... # type: int
-SQLITE_TRANSACTION = ... # type: int
-SQLITE_UPDATE = ... # type: int
-adapters = ... # type: Any
-converters = ... # type: Any
-sqlite_version = ... # type: str
-version = ... # type: str
+PARSE_COLNAMES = ...  # type: int
+PARSE_DECLTYPES = ...  # type: int
+SQLITE_ALTER_TABLE = ...  # type: int
+SQLITE_ANALYZE = ...  # type: int
+SQLITE_ATTACH = ...  # type: int
+SQLITE_CREATE_INDEX = ...  # type: int
+SQLITE_CREATE_TABLE = ...  # type: int
+SQLITE_CREATE_TEMP_INDEX = ...  # type: int
+SQLITE_CREATE_TEMP_TABLE = ...  # type: int
+SQLITE_CREATE_TEMP_TRIGGER = ...  # type: int
+SQLITE_CREATE_TEMP_VIEW = ...  # type: int
+SQLITE_CREATE_TRIGGER = ...  # type: int
+SQLITE_CREATE_VIEW = ...  # type: int
+SQLITE_DELETE = ...  # type: int
+SQLITE_DENY = ...  # type: int
+SQLITE_DETACH = ...  # type: int
+SQLITE_DROP_INDEX = ...  # type: int
+SQLITE_DROP_TABLE = ...  # type: int
+SQLITE_DROP_TEMP_INDEX = ...  # type: int
+SQLITE_DROP_TEMP_TABLE = ...  # type: int
+SQLITE_DROP_TEMP_TRIGGER = ...  # type: int
+SQLITE_DROP_TEMP_VIEW = ...  # type: int
+SQLITE_DROP_TRIGGER = ...  # type: int
+SQLITE_DROP_VIEW = ...  # type: int
+SQLITE_IGNORE = ...  # type: int
+SQLITE_INSERT = ...  # type: int
+SQLITE_OK = ...  # type: int
+SQLITE_PRAGMA = ...  # type: int
+SQLITE_READ = ...  # type: int
+SQLITE_REINDEX = ...  # type: int
+SQLITE_SELECT = ...  # type: int
+SQLITE_TRANSACTION = ...  # type: int
+SQLITE_UPDATE = ...  # type: int
+adapters = ...  # type: Any
+converters = ...  # type: Any
+sqlite_version = ...  # type: str
+version = ...  # type: str
 
 # TODO: adapt needs to get probed
 def adapt(obj, protocol, alternate): ...
 def complete_statement(sql: str) -> bool: ...
-def connect(database: Union[bytes, unicode],
-            timeout: float = ... ,
-            detect_types: int = ...,
-            isolation_level: Union[str, None] = ...,
-            check_same_thread: bool = ...,
-            factory: Union[Connection, None] = ...,
-            cached_statements: int = ...) -> Connection: ...
+def connect(
+    database: Union[bytes, unicode],
+    timeout: float = ...,
+    detect_types: int = ...,
+    isolation_level: Union[str, None] = ...,
+    check_same_thread: bool = ...,
+    factory: Union[Connection, None] = ...,
+    cached_statements: int = ...,
+) -> Connection: ...
 def enable_callback_tracebacks(flag: bool) -> None: ...
 def enable_shared_cache(do_enable: int) -> None: ...
 def register_adapter(type: type, callable: Any) -> None: ...
+
 # TODO: sqlite3.register_converter.__doc__ specifies callable as unknown
 def register_converter(typename: str, callable: bytes) -> None: ...
 
@@ -84,31 +87,35 @@ class Cache:
     def get(self, *args, **kwargs) -> None: ...
 
 class Connection:
-    DataError = ... # type: Any
-    DatabaseError = ... # type: Any
-    Error = ... # type: Any
-    IntegrityError = ... # type: Any
-    InterfaceError = ... # type: Any
-    InternalError = ... # type: Any
-    NotSupportedError = ... # type: Any
-    OperationalError = ... # type: Any
-    ProgrammingError = ... # type: Any
-    Warning = ... # type: Any
-    in_transaction = ... # type: Any
-    isolation_level = ... # type: Any
-    row_factory = ... # type: Any
-    text_factory = ... # type: Any
-    total_changes = ... # type: Any
+    DataError = ...  # type: Any
+    DatabaseError = ...  # type: Any
+    Error = ...  # type: Any
+    IntegrityError = ...  # type: Any
+    InterfaceError = ...  # type: Any
+    InternalError = ...  # type: Any
+    NotSupportedError = ...  # type: Any
+    OperationalError = ...  # type: Any
+    ProgrammingError = ...  # type: Any
+    Warning = ...  # type: Any
+    in_transaction = ...  # type: Any
+    isolation_level = ...  # type: Any
+    row_factory = ...  # type: Any
+    text_factory = ...  # type: Any
+    total_changes = ...  # type: Any
     def __init__(self, *args, **kwargs): ...
     def close(self) -> None: ...
     def commit(self) -> None: ...
-    def create_aggregate(self, name: str, num_params: int, aggregate_class: type) -> None: ...
+    def create_aggregate(
+        self, name: str, num_params: int, aggregate_class: type
+    ) -> None: ...
     def create_collation(self, name: str, callable: Any) -> None: ...
     def create_function(self, name: str, num_params: int, func: Any) -> None: ...
     def cursor(self, cursorClass=...) -> Cursor: ...
     def execute(self, sql: str, parameters: Iterable = ...) -> Cursor: ...
     # TODO: please check in executemany() if seq_of_parameters type is possible like this
-    def executemany(self, sql: str, seq_of_parameters: Iterable[Iterable]) -> Cursor: ...
+    def executemany(
+        self, sql: str, seq_of_parameters: Iterable[Iterable]
+    ) -> Cursor: ...
     def executescript(self, sql_script: Union[bytes, unicode]) -> Cursor: ...
     def interrupt(self, *args, **kwargs) -> None: ...
     def iterdump(self, *args, **kwargs) -> None: ...
@@ -125,12 +132,12 @@ class Connection:
     def __exit__(self, *args, **kwargs): ...
 
 class Cursor:
-    arraysize = ... # type: Any
-    connection = ... # type: Any
-    description = ... # type: Any
-    lastrowid = ... # type: Any
-    row_factory = ... # type: Any
-    rowcount = ... # type: Any
+    arraysize = ...  # type: Any
+    connection = ...  # type: Any
+    description = ...  # type: Any
+    lastrowid = ...  # type: Any
+    row_factory = ...  # type: Any
+    rowcount = ...  # type: Any
     # TODO: Cursor class accepts exactly 1 argument
     # required type is sqlite3.Connection (which is imported as _Connection)
     # however, the name of the __init__ variable is unknown
@@ -148,23 +155,16 @@ class Cursor:
     def __next__(self): ...
 
 class DataError(DatabaseError): ...
-
 class DatabaseError(Error): ...
-
 class Error(Exception): ...
-
 class IntegrityError(DatabaseError): ...
-
 class InterfaceError(Error): ...
-
 class InternalError(DatabaseError): ...
-
 class NotSupportedError(DatabaseError): ...
-
 class OperationalError(DatabaseError): ...
 
 class OptimizedUnicode:
-    maketrans = ... # type: Any
+    maketrans = ...  # type: Any
     def __init__(self, *args, **kwargs): ...
     def capitalize(self, *args, **kwargs): ...
     def casefold(self, *args, **kwargs): ...

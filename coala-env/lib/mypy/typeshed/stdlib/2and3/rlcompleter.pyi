@@ -8,6 +8,5 @@ if sys.version_info >= (3,):
 else:
     _Text = Union[str, unicode]
 
-
 class Completer:
     def complete(self, text: _Text, state: int) -> Optional[str]: ...

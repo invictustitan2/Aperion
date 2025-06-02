@@ -5,9 +5,9 @@
 from token import *
 from typing import TextIO, Union
 
-COMMENT = ... # type: Any
-NL = ... # type: Any
-ENCODING = ... # type: Any
+COMMENT = ...  # type: Any
+NL = ...  # type: Any
+ENCODING = ...  # type: Any
 
 class TokenInfo:
     @property
@@ -17,10 +17,10 @@ class TokenError(Exception): ...
 class StopTokenizing(Exception): ...
 
 class Untokenizer:
-    tokens = ... # type: Any
-    prev_row = ... # type: Any
-    prev_col = ... # type: Any
-    encoding = ... # type: Any
+    tokens = ...  # type: Any
+    prev_row = ...  # type: Any
+    prev_col = ...  # type: Any
+    encoding = ...  # type: Any
     def __init__(self): ...
     def add_whitespace(self, start): ...
     def untokenize(self, iterable): ...
@@ -29,7 +29,6 @@ class Untokenizer:
 def untokenize(iterable): ...
 def detect_encoding(readline): ...
 def tokenize(readline): ...
-
 def open(filename: Union[str, bytes, int]) -> TextIO: ...
 
 # Names in __all__ with no definition:

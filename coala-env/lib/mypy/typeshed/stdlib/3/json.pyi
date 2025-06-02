@@ -1,5 +1,4 @@
-from typing import (IO, Any, Callable, Dict, Iterator, List, Optional, Tuple,
-                    Union)
+from typing import IO, Any, Callable, Dict, Iterator, List, Optional, Tuple, Union
 
 class JSONDecodeError(ValueError):
     def dumps(self, obj: Any) -> str: ...
@@ -7,7 +6,8 @@ class JSONDecodeError(ValueError):
     def loads(self, s: str) -> Any: ...
     def load(self, fp: IO[str]) -> Any: ...
 
-def dumps(obj: Any,
+def dumps(
+    obj: Any,
     skipkeys: bool = ...,
     ensure_ascii: bool = ...,
     check_circular: bool = ...,
@@ -17,9 +17,10 @@ def dumps(obj: Any,
     separators: Optional[Tuple[str, str]] = ...,
     default: Optional[Callable[[Any], Any]] = ...,
     sort_keys: bool = ...,
-    **kwds: Any) -> str: ...
-
-def dump(obj: Any,
+    **kwds: Any
+) -> str: ...
+def dump(
+    obj: Any,
     fp: IO[str],
     skipkeys: bool = ...,
     ensure_ascii: bool = ...,
@@ -30,26 +31,29 @@ def dump(obj: Any,
     separators: Optional[Tuple[str, str]] = ...,
     default: Optional[Callable[[Any], Any]] = ...,
     sort_keys: bool = ...,
-    **kwds: Any) -> None: ...
-
-def loads(s: str,
-    encoding: Any = ..., # ignored and deprecated
+    **kwds: Any
+) -> None: ...
+def loads(
+    s: str,
+    encoding: Any = ...,  # ignored and deprecated
     cls: Any = ...,
     object_hook: Callable[[Dict], Any] = ...,
     parse_float: Optional[Callable[[str], Any]] = ...,
     parse_int: Optional[Callable[[str], Any]] = ...,
     parse_constant: Optional[Callable[[str], Any]] = ...,
     object_pairs_hook: Optional[Callable[[List[Tuple[Any, Any]]], Any]] = ...,
-    **kwds: Any) -> Any: ...
-
-def load(fp: IO[str],
+    **kwds: Any
+) -> Any: ...
+def load(
+    fp: IO[str],
     cls: Any = ...,
     object_hook: Callable[[Dict], Any] = ...,
     parse_float: Optional[Callable[[str], Any]] = ...,
     parse_int: Optional[Callable[[str], Any]] = ...,
     parse_constant: Optional[Callable[[str], Any]] = ...,
     object_pairs_hook: Optional[Callable[[List[Tuple[Any, Any]]], Any]] = ...,
-    **kwds: Any) -> Any: ...
+    **kwds: Any
+) -> Any: ...
 
 class JSONEncoder(object):
     item_separator = ...  # type: str
@@ -62,13 +66,20 @@ class JSONEncoder(object):
     sort_keys = ...  # type: bool
     indent = None  # type: int
 
-    def __init__(self, skipkeys: bool=..., ensure_ascii: bool=...,
-            check_circular: bool=..., allow_nan: bool=..., sort_keys: bool=...,
-            indent: int=None, separators: Tuple[str, str]=None, default: Callable=None) -> None: ...
-
+    def __init__(
+        self,
+        skipkeys: bool = ...,
+        ensure_ascii: bool = ...,
+        check_circular: bool = ...,
+        allow_nan: bool = ...,
+        sort_keys: bool = ...,
+        indent: int = None,
+        separators: Tuple[str, str] = None,
+        default: Callable = None,
+    ) -> None: ...
     def default(self, o: Any) -> Any: ...
     def encode(self, o: Any) -> str: ...
-    def iterencode(self, o: Any, _one_shot: bool=False) -> Iterator[str]: ...
+    def iterencode(self, o: Any, _one_shot: bool = False) -> Iterator[str]: ...
 
 class JSONDecoder(object):
 
@@ -79,11 +90,14 @@ class JSONDecoder(object):
     strict = ...  # type: bool
     object_pairs_hook = None  # type: Callable[[List[Tuple[str, Any]]], Any]
 
-    def __init__(self, object_hook: Callable[[Dict[str, Any]], Any]=None,
-            parse_float: Callable[[str], Any]=None,
-            parse_int: Callable[[str], Any]=None,
-            parse_constant: Callable[[str], Any]=None,
-            strict: bool=True,
-            object_pairs_hook: Callable[[List[Tuple[str, Any]]], Any]=None) -> None: ...
+    def __init__(
+        self,
+        object_hook: Callable[[Dict[str, Any]], Any] = None,
+        parse_float: Callable[[str], Any] = None,
+        parse_int: Callable[[str], Any] = None,
+        parse_constant: Callable[[str], Any] = None,
+        strict: bool = True,
+        object_pairs_hook: Callable[[List[Tuple[str, Any]]], Any] = None,
+    ) -> None: ...
     def decode(self, s: str) -> Any: ...
     def raw_decode(self, s: str) -> Tuple[Any, int]: ...

@@ -25,8 +25,7 @@ from urllib2 import HTTPDigestAuthHandler as HTTPDigestAuthHandler
 from urllib2 import HTTPErrorProcessor as HTTPErrorProcessor
 from urllib2 import HTTPHandler as HTTPHandler
 from urllib2 import HTTPPasswordMgr as HTTPPasswordMgr
-from urllib2 import \
-    HTTPPasswordMgrWithDefaultRealm as HTTPPasswordMgrWithDefaultRealm
+from urllib2 import HTTPPasswordMgrWithDefaultRealm as HTTPPasswordMgrWithDefaultRealm
 from urllib2 import HTTPRedirectHandler as HTTPRedirectHandler
 from urllib2 import HTTPSHandler as HTTPSHandler
 from urllib2 import OpenerDirector as OpenerDirector

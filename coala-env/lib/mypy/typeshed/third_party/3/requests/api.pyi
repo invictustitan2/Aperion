@@ -1,6 +1,5 @@
 # Stubs for requests.api (Python 3)
 
-
 from .models import Response
 
 def request(method: str, url: str, **kwargs) -> Response: ...

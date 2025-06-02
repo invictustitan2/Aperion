@@ -4,7 +4,9 @@ from urllib.response import addinfourl
 
 class URLError(IOError):
     reason = ...  # type: Union[str, BaseException]
+
 class HTTPError(URLError, addinfourl):
     code = ...  # type: int
     headers = ...  # type: Dict[str, str]
+
 class ContentTooShortError(URLError): ...

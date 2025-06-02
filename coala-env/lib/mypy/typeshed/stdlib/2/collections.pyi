@@ -6,21 +6,40 @@
 
 # NOTE: These are incomplete!
 
-from typing import (Any, Callable, Dict, Generic, Iterable,
-                    Iterator, List, Mapping, Optional, Reversible, Sized, Tuple, Type,
-                    TypeVar, Union, overload)
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Generic,
+    Iterable,
+    Iterator,
+    List,
+    Mapping,
+    Optional,
+    Reversible,
+    Sized,
+    Tuple,
+    Type,
+    TypeVar,
+    Union,
+    overload,
+)
 
-_T = TypeVar('_T')
-_KT = TypeVar('_KT')
-_VT = TypeVar('_VT')
+_T = TypeVar("_T")
+_KT = TypeVar("_KT")
+_VT = TypeVar("_VT")
 
 # namedtuple is special-cased in the type checker; the initializer is ignored.
-def namedtuple(typename: str, field_names: Union[str, Iterable[Any]], *,
-               verbose: bool = ..., rename: bool = ...) -> Type[tuple]: ...
+def namedtuple(
+    typename: str,
+    field_names: Union[str, Iterable[Any]],
+    *,
+    verbose: bool = ...,
+    rename: bool = ...
+) -> Type[tuple]: ...
 
 class deque(Sized, Iterable[_T], Reversible[_T], Generic[_T]):
-    def __init__(self, iterable: Iterable[_T] = ...,
-                 maxlen: int = ...) -> None: ...
+    def __init__(self, iterable: Iterable[_T] = ..., maxlen: int = ...) -> None: ...
     @property
     def maxlen(self) -> Optional[int]: ...
     def append(self, x: _T) -> None: ...
@@ -65,7 +84,9 @@ class Counter(Dict[_T, int], Generic[_T]):
     @overload
     def update(self, m: Mapping[_T, int], **kwargs: _VT) -> None: ...
     @overload
-    def update(self, m: Union[Iterable[_T], Iterable[Tuple[_T, int]]], **kwargs: _VT) -> None: ...
+    def update(
+        self, m: Union[Iterable[_T], Iterable[Tuple[_T, int]]], **kwargs: _VT
+    ) -> None: ...
 
 class OrderedDict(Dict[_KT, _VT], Generic[_KT, _VT]):
     def popitem(self, last: bool = ...) -> Tuple[_KT, _VT]: ...
@@ -83,11 +104,13 @@ class defaultdict(Dict[_KT, _VT], Generic[_KT, _VT]):
     @overload
     def __init__(self, default_factory: Callable[[], _VT]) -> None: ...
     @overload
-    def __init__(self, default_factory: Callable[[], _VT],
-                 map: Mapping[_KT, _VT]) -> None: ...
+    def __init__(
+        self, default_factory: Callable[[], _VT], map: Mapping[_KT, _VT]
+    ) -> None: ...
     @overload
-    def __init__(self, default_factory: Callable[[], _VT],
-                 iterable: Iterable[Tuple[_KT, _VT]]) -> None: ...
+    def __init__(
+        self, default_factory: Callable[[], _VT], iterable: Iterable[Tuple[_KT, _VT]]
+    ) -> None: ...
     def __missing__(self, key: _KT) -> _VT: ...
 
 class ChainMap(Dict[_KT, _VT], Generic[_KT, _VT]):
@@ -95,11 +118,8 @@ class ChainMap(Dict[_KT, _VT], Generic[_KT, _VT]):
     def __init__(self) -> None: ...
     @overload
     def __init__(self, *maps: Mapping[_KT, _VT]) -> None: ...
-
     @property
     def maps(self) -> List[Mapping[_KT, _VT]]: ...
-
     def new_child(self, m: Mapping[_KT, _VT] = ...) -> ChainMap[_KT, _VT]: ...
-
     @property
     def parents(self) -> ChainMap[_KT, _VT]: ...

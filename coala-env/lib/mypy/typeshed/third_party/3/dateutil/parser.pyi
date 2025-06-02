@@ -3,7 +3,6 @@ from typing import IO, Any, Optional, Union
 
 __all__ = ...  # type: List[str]
 
-
 class parserinfo(object):
     JUMP = ...  # type: List[str]
     WEEKDAYS = ...  # type: List[Tuple[str, str]]
@@ -14,7 +13,7 @@ class parserinfo(object):
     PERTAIN = ...  # type: List[str]
     TZOFFSET = ...  # type: Dict[str, int]
 
-    def __init__(self, dayfirst: bool=..., yearfirst: bool=...) -> None: ...
+    def __init__(self, dayfirst: bool = ..., yearfirst: bool = ...) -> None: ...
     def jump(self, name: str) -> bool: ...
     def weekday(self, name: str) -> str: ...
     def month(self, name: str) -> str: ...
@@ -26,27 +25,20 @@ class parserinfo(object):
     def convertyear(self, year: int) -> int: ...
     def validate(self, year: datetime) -> bool: ...
 
-
 class parser(object):
-    def __init__(self, info: parserinfo=...) -> None: ...
-
+    def __init__(self, info: parserinfo = ...) -> None: ...
     def parse(
         self,
         timestr: Union[str, bytes, IO[Any]],
         default: Optional[datetime],
-        ignoretz: bool=...,
-        tzinfos =...,
-            ) -> datetime: ...
+        ignoretz: bool = ...,
+        tzinfos=...,
+    ) -> datetime: ...
 
 DEFAULTPARSER = ...  # type: parser
 
+def parse(timestr, parserinfo: parserinfo = ..., **kwargs) -> datetime: ...
 
-def parse(timestr, parserinfo: parserinfo=..., **kwargs) -> datetime:
-    ...
-
-
-class _tzparser(object):
-    ...
-
+class _tzparser(object): ...
 
 DEFAULTTZPARSER = ...  # type: _tzparser

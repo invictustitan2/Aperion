@@ -10,5 +10,4 @@ from . import types as types
 # This should re-export orm but orm is totally broken right now
 # from . import orm as orm
 
-
-__version__ = ... # type: int
+__version__ = ...  # type: int

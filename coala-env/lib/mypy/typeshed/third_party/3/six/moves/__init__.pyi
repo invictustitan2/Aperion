@@ -18,4 +18,3 @@ from itertools import zip_longest as zip_longest
 from os import getcwd as getcwd
 from os import getcwdb as getcwdb
 from sys import intern as intern
-

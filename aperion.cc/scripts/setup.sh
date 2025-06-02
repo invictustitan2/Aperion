@@ -9,14 +9,14 @@ sudo apt update && sudo apt upgrade -y
 
 # 2️⃣ Install nginx if not present
 if ! dpkg -l | grep -q nginx; then
-  echo "🔧 Installing Nginx..."
-  sudo apt install -y nginx
+	echo "🔧 Installing Nginx..."
+	sudo apt install -y nginx
 fi
 
 # 3️⃣ Install Python if needed
-if ! command -v python3 &> /dev/null; then
-  echo "🔧 Installing Python3..."
-  sudo apt install -y python3 python3-pip
+if ! command -v python3 &>/dev/null; then
+	echo "🔧 Installing Python3..."
+	sudo apt install -y python3 python3-pip
 fi
 
 # 4️⃣ Remove any old deploy of aperion.cc
@@ -33,8 +33,8 @@ sudo find /var/www/aperion.cc -type f -exec chmod 644 {} \;
 # 6️⃣ Nginx config for local-only
 NGINX_CONF="/etc/nginx/sites-available/aperion.cc"
 if [ ! -f "$NGINX_CONF" ]; then
-  echo "📝 Creating Nginx config..."
-  cat <<EOL | sudo tee $NGINX_CONF
+	echo "📝 Creating Nginx config..."
+	cat <<EOL | sudo tee $NGINX_CONF
 server {
     listen 127.0.0.1:80;
     server_name aperion.local;
@@ -47,7 +47,7 @@ server {
     }
 }
 EOL
-  sudo ln -sf $NGINX_CONF /etc/nginx/sites-enabled/aperion.cc
+	sudo ln -sf $NGINX_CONF /etc/nginx/sites-enabled/aperion.cc
 fi
 
 # 7️⃣ Reload Nginx

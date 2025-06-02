@@ -15,6 +15,6 @@ class Enum:
 class IntEnum(int, Enum):
     value = ...  # type: int
 
-_T = TypeVar('_T')
+_T = TypeVar("_T")
 
 def unique(enumeration: _T) -> _T: ...

@@ -11,8 +11,18 @@ class make_encoder:
     default = ...  # type: Any
     encoder = ...  # type: Any
     item_separator = ...  # type: Any
-    def __init__(self, markers, default, encoder, indent, key_separator,
-                 item_separator, sort_keys, skipkeys, allow_nan) -> None: ...
+    def __init__(
+        self,
+        markers,
+        default,
+        encoder,
+        indent,
+        key_separator,
+        item_separator,
+        sort_keys,
+        skipkeys,
+        allow_nan,
+    ) -> None: ...
     def __call__(self, *args, **kwargs) -> Any: ...
 
 class make_scanner:
@@ -27,4 +37,4 @@ class make_scanner:
     def __call__(self, string: str, index: int) -> Tuple[Any, int]: ...
 
 def encode_basestring_ascii(s: str) -> str: ...
-def scanstring(string: str, end: int, strict:bool = ...) -> Tuple[str, int]: ...
+def scanstring(string: str, end: int, strict: bool = ...) -> Tuple[str, int]: ...

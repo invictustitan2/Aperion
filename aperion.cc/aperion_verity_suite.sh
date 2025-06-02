@@ -17,47 +17,47 @@ echo -e "\n🔍 Starting full Aperion Verity & Security Suite..."
 
 # Verity check for each directory
 for BASE_DIR in "${BASE_DIRS[@]}"; do
-  echo -e "\n🔍 Checking integrity of: $BASE_DIR"
-  find $BASE_DIR -type f | sort | while read f; do
-    sha256sum "$f"
-  done > "$BASE_DIR/verity_manifest.sha256"
-  echo "✅ Manifest created for $(basename $BASE_DIR)"
+	echo -e "\n🔍 Checking integrity of: $BASE_DIR"
+	find $BASE_DIR -type f | sort | while read f; do
+		sha256sum "$f"
+	done >"$BASE_DIR/verity_manifest.sha256"
+	echo "✅ Manifest created for $(basename $BASE_DIR)"
 done
 
 # SSL certificate checks
 echo -e "\n🔍 Verifying SSL certificate presence & permissions..."
 if [ -d "$SSL_DIR" ]; then
-  echo "✅ SSL directory found: $SSL_DIR"
-  CERT="$SSL_DIR/fullchain.pem"
-  KEY="$SSL_DIR/privkey.pem"
+	echo "✅ SSL directory found: $SSL_DIR"
+	CERT="$SSL_DIR/fullchain.pem"
+	KEY="$SSL_DIR/privkey.pem"
 
-  if [ -f "$CERT" ]; then
-    echo "✅ SSL certificate file: $CERT"
-  else
-    echo "❌ SSL certificate file missing!"
-    ssl_ok=false
-  fi
+	if [ -f "$CERT" ]; then
+		echo "✅ SSL certificate file: $CERT"
+	else
+		echo "❌ SSL certificate file missing!"
+		ssl_ok=false
+	fi
 
-  if [ -f "$KEY" ]; then
-    echo "✅ SSL key file: $KEY"
-  else
-    echo "❌ SSL key file missing!"
-    ssl_ok=false
-  fi
+	if [ -f "$KEY" ]; then
+		echo "✅ SSL key file: $KEY"
+	else
+		echo "❌ SSL key file missing!"
+		ssl_ok=false
+	fi
 
-  echo "🔍 SSL file permissions:"
-  ls -l $CERT $KEY
+	echo "🔍 SSL file permissions:"
+	ls -l $CERT $KEY
 
-  if command -v openssl >/dev/null 2>&1 && [ -f "$CERT" ]; then
-    EXPIRY_DATE=$(openssl x509 -enddate -noout -in $CERT | cut -d= -f2)
-    echo "✅ SSL certificate expires on: $EXPIRY_DATE"
-  else
-    echo "⚠️ OpenSSL not available or cert missing—skipping expiration check."
-    ssl_ok=false
-  fi
+	if command -v openssl >/dev/null 2>&1 && [ -f "$CERT" ]; then
+		EXPIRY_DATE=$(openssl x509 -enddate -noout -in $CERT | cut -d= -f2)
+		echo "✅ SSL certificate expires on: $EXPIRY_DATE"
+	else
+		echo "⚠️ OpenSSL not available or cert missing—skipping expiration check."
+		ssl_ok=false
+	fi
 else
-  echo "❌ SSL directory missing: $SSL_DIR"
-  ssl_ok=false
+	echo "❌ SSL directory missing: $SSL_DIR"
+	ssl_ok=false
 fi
 
 # Run tailored Python security scripts
@@ -77,17 +77,17 @@ python3 $SECURITY_DIR/integrity_check.py || integrity_ok=false
 echo -e "\n🔍 Checking Nginx site configurations..."
 
 if [ -f /etc/nginx/sites-enabled/default ]; then
-  echo "❌ Default Nginx config is still enabled!"
-  nginx_ok=false
+	echo "❌ Default Nginx config is still enabled!"
+	nginx_ok=false
 else
-  echo "✅ Default Nginx config removed."
+	echo "✅ Default Nginx config removed."
 fi
 
 if [ -L /etc/nginx/sites-enabled/aperion.conf ]; then
-  echo "✅ Aperion config linked in sites-enabled."
+	echo "✅ Aperion config linked in sites-enabled."
 else
-  echo "❌ Aperion config not linked or missing!"
-  nginx_ok=false
+	echo "❌ Aperion config not linked or missing!"
+	nginx_ok=false
 fi
 
 # Final summary

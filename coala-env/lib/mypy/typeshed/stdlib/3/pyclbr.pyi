@@ -8,13 +8,14 @@ class Class:
     file = ...  # type: int
     lineno = ...  # type: int
 
-    def __init__(self,
-                 module: str,
-                 name: str,
-                 super: Optional[List[Union["Class", str]]],
-                 file: str,
-                 lineno: int) -> None: ...
-
+    def __init__(
+        self,
+        module: str,
+        name: str,
+        super: Optional[List[Union["Class", str]]],
+        file: str,
+        lineno: int,
+    ) -> None: ...
 
 class Function:
     module = ...  # type: str
@@ -22,18 +23,11 @@ class Function:
     file = ...  # type: int
     lineno = ...  # type: int
 
-    def __init__(self,
-                 module: str,
-                 name: str,
-                 file: str,
-                 lineno: int) -> None: ...
+    def __init__(self, module: str, name: str, file: str, lineno: int) -> None: ...
 
-
-def readmodule(module: str,
-               path: Optional[Sequence[str]] = ...
-               ) -> Dict[str, Class]: ...
-
-
-def readmodule_ex(module: str,
-                  path: Optional[Sequence[str]] = ...
-                  ) -> Dict[str, Union[Class, Function, List[str]]]: ...
+def readmodule(
+    module: str, path: Optional[Sequence[str]] = ...
+) -> Dict[str, Class]: ...
+def readmodule_ex(
+    module: str, path: Optional[Sequence[str]] = ...
+) -> Dict[str, Union[Class, Function, List[str]]]: ...

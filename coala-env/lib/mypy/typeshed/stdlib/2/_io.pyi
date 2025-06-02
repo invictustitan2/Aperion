@@ -2,12 +2,10 @@ from typing import Any, Iterable, List, Tuple, Union
 
 DEFAULT_BUFFER_SIZE = ...  # type: int
 
-
 class BlockingIOError(IOError):
     characters_written = ...  # type: int
 
 class UnsupportedOperation(ValueError, IOError): ...
-
 
 class _IOBase(object):
     closed = ...  # type: bool
@@ -72,7 +70,7 @@ class _RawIOBase(_IOBase):
 class FileIO(_RawIOBase):
     mode = ...  # type: str
     closefd = ...  # type: bool
-    def readinto(self, buffer: bytearray)-> int: ...
+    def readinto(self, buffer: bytearray) -> int: ...
     def write(self, pbuf: str) -> int: ...
 
 class IncrementalNewlineDecoder(object):
@@ -89,6 +87,7 @@ class _TextIOBase(_IOBase):
     def read(self, n: int = ...) -> str: ...
     def write(self) -> None:
         raise UnsupportedOperation
+
     def detach(self) -> None:
         raise UnsupportedOperation
 

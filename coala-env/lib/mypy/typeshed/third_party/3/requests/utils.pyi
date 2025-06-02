@@ -1,6 +1,5 @@
 # Stubs for requests.utils (Python 3)
 
-
 from . import compat, cookies, exceptions, structures
 
 OrderedDict = compat.OrderedDict

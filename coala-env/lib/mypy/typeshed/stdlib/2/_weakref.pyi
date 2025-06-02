@@ -1,17 +1,18 @@
 from typing import Any, Callable, Generic, Optional, TypeVar
 
-_T = TypeVar('_T')
+_T = TypeVar("_T")
 
 class CallableProxyType(object):  # "weakcallableproxy"
-  pass
+    pass
 
 class ProxyType(object):  # "weakproxy"
-  pass
+    pass
 
 class ReferenceType(Generic[_T]):
     # TODO rest of members
-    def __init__(self, o: _T, callback: Callable[[ReferenceType[_T]],
-                                                 Any] = ...) -> None: ...
+    def __init__(
+        self, o: _T, callback: Callable[[ReferenceType[_T]], Any] = ...
+    ) -> None: ...
     def __call__(self) -> Optional[_T]: ...
 
 ref = ReferenceType

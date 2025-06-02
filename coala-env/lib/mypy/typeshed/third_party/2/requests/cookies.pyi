@@ -2,7 +2,6 @@
 
 from typing import MutableMapping
 
-
 class MockRequest:
     type = ...  # type: Any
     def __init__(self, request) -> None: ...

@@ -1,6 +1,5 @@
 # Stubs for requests.auth (Python 3)
 
-
 from . import cookies, status_codes, utils
 
 extract_cookies_to_jar = cookies.extract_cookies_to_jar

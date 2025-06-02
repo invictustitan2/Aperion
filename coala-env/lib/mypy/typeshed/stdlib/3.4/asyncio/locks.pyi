@@ -4,7 +4,7 @@ from .coroutines import coroutine
 from .events import AbstractEventLoop
 from .futures import Future
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 __all__ = ...  # type: str
 
@@ -36,7 +36,9 @@ class Event:
     def wait(self) -> bool: ...
 
 class Condition(_ContextManagerMixin):
-    def __init__(self, lock: Lock = None, *, loop: AbstractEventLoop = None) -> None: ...
+    def __init__(
+        self, lock: Lock = None, *, loop: AbstractEventLoop = None
+    ) -> None: ...
     def locked(self) -> bool: ...
     @coroutine
     def acquire(self) -> Future[bool]: ...

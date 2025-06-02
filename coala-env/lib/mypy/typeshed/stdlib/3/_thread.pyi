@@ -2,8 +2,8 @@
 
 # NOTE: These are incomplete!
 
-
 def _count() -> int: ...
+
 _dangling = ...  # type: Any
 
 class LockType:

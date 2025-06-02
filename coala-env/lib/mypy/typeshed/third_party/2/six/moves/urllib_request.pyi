@@ -3,34 +3,32 @@
 #
 # Stubs for six.moves.urllib_request (Python 2.7)
 
-from six.moves.urllib.request import \
-    AbstractBasicAuthHandler as AbstractBasicAuthHandler
-from six.moves.urllib.request import \
-    AbstractDigestAuthHandler as AbstractDigestAuthHandler
+from six.moves.urllib.request import (
+    AbstractBasicAuthHandler as AbstractBasicAuthHandler,
+)
+from six.moves.urllib.request import (
+    AbstractDigestAuthHandler as AbstractDigestAuthHandler,
+)
 from six.moves.urllib.request import BaseHandler as BaseHandler
 from six.moves.urllib.request import CacheFTPHandler as CacheFTPHandler
 from six.moves.urllib.request import FancyURLopener as FancyURLopener
 from six.moves.urllib.request import FileHandler as FileHandler
 from six.moves.urllib.request import FTPHandler as FTPHandler
-from six.moves.urllib.request import \
-    HTTPBasicAuthHandler as HTTPBasicAuthHandler
+from six.moves.urllib.request import HTTPBasicAuthHandler as HTTPBasicAuthHandler
 from six.moves.urllib.request import HTTPCookieProcessor as HTTPCookieProcessor
-from six.moves.urllib.request import \
-    HTTPDefaultErrorHandler as HTTPDefaultErrorHandler
-from six.moves.urllib.request import \
-    HTTPDigestAuthHandler as HTTPDigestAuthHandler
+from six.moves.urllib.request import HTTPDefaultErrorHandler as HTTPDefaultErrorHandler
+from six.moves.urllib.request import HTTPDigestAuthHandler as HTTPDigestAuthHandler
 from six.moves.urllib.request import HTTPErrorProcessor as HTTPErrorProcessor
 from six.moves.urllib.request import HTTPHandler as HTTPHandler
 from six.moves.urllib.request import HTTPPasswordMgr as HTTPPasswordMgr
-from six.moves.urllib.request import \
-    HTTPPasswordMgrWithDefaultRealm as HTTPPasswordMgrWithDefaultRealm
+from six.moves.urllib.request import (
+    HTTPPasswordMgrWithDefaultRealm as HTTPPasswordMgrWithDefaultRealm,
+)
 from six.moves.urllib.request import HTTPRedirectHandler as HTTPRedirectHandler
 from six.moves.urllib.request import HTTPSHandler as HTTPSHandler
 from six.moves.urllib.request import OpenerDirector as OpenerDirector
-from six.moves.urllib.request import \
-    ProxyBasicAuthHandler as ProxyBasicAuthHandler
-from six.moves.urllib.request import \
-    ProxyDigestAuthHandler as ProxyDigestAuthHandler
+from six.moves.urllib.request import ProxyBasicAuthHandler as ProxyBasicAuthHandler
+from six.moves.urllib.request import ProxyDigestAuthHandler as ProxyDigestAuthHandler
 from six.moves.urllib.request import ProxyHandler as ProxyHandler
 from six.moves.urllib.request import Request as Request
 from six.moves.urllib.request import UnknownHandler as UnknownHandler

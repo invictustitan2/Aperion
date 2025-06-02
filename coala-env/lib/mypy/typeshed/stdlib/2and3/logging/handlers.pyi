@@ -22,60 +22,93 @@ class WatchedFileHandler(Handler):
     @overload
     def __init__(self, filename: str, mode: str) -> None: ...
     @overload
-    def __init__(self, filename: str, mode: str,
-                 encoding: Optional[str]) -> None: ...
+    def __init__(self, filename: str, mode: str, encoding: Optional[str]) -> None: ...
     @overload
-    def __init__(self, filename: str, mode: str, encoding: Optional[str],
-                 delay: bool) -> None: ...
-
+    def __init__(
+        self, filename: str, mode: str, encoding: Optional[str], delay: bool
+    ) -> None: ...
 
 if sys.version_info >= (3,):
     class BaseRotatingHandler(FileHandler):
         namer = ...  # type: Optional[Callable[[str], None]]
         rotator = ...  # type: Optional[Callable[[str, str], None]]
-        def __init__(self, filename: str, mode: str,
-                     encoding: Optional[str] = ...,
-                     delay: bool = ...) -> None: ...
+        def __init__(
+            self,
+            filename: str,
+            mode: str,
+            encoding: Optional[str] = ...,
+            delay: bool = ...,
+        ) -> None: ...
         def rotation_filename(self, default_name: str) -> None: ...
         def rotate(self, source: str, dest: str) -> None: ...
 
-
 if sys.version_info >= (3,):
     class RotatingFileHandler(BaseRotatingHandler):
-        def __init__(self, filename: str, mode: str = ..., maxBytes: int = ...,
-                     backupCount: int = ..., encoding: Optional[str] = ...,
-                     delay: bool = ...) -> None: ...
-        def doRollover(self) -> None: ...
-else:
-    class RotatingFileHandler(Handler):
-        def __init__(self, filename: str, mode: str = ..., maxBytes: int = ...,
-                     backupCount: int = ..., encoding: Optional[str] = ...,
-                     delay: bool = ...) -> None: ...
+        def __init__(
+            self,
+            filename: str,
+            mode: str = ...,
+            maxBytes: int = ...,
+            backupCount: int = ...,
+            encoding: Optional[str] = ...,
+            delay: bool = ...,
+        ) -> None: ...
         def doRollover(self) -> None: ...
 
+else:
+    class RotatingFileHandler(Handler):
+        def __init__(
+            self,
+            filename: str,
+            mode: str = ...,
+            maxBytes: int = ...,
+            backupCount: int = ...,
+            encoding: Optional[str] = ...,
+            delay: bool = ...,
+        ) -> None: ...
+        def doRollover(self) -> None: ...
 
 if sys.version_info >= (3,):
     class TimedRotatingFileHandler(BaseRotatingHandler):
         if sys.version_info >= (3, 4):
-            def __init__(self, filename: str, when: str = ...,
-                         interval: int = ...,
-                         backupCount: int = ..., encoding: Optional[str] = ...,
-                         delay: bool = ..., utc: bool = ...,
-                         atTime: Optional[datetime.datetime] = ...) -> None: ...
+            def __init__(
+                self,
+                filename: str,
+                when: str = ...,
+                interval: int = ...,
+                backupCount: int = ...,
+                encoding: Optional[str] = ...,
+                delay: bool = ...,
+                utc: bool = ...,
+                atTime: Optional[datetime.datetime] = ...,
+            ) -> None: ...
         else:
-            def __init__(self,
-                         filename: str, when: str = ..., interval: int = ...,
-                         backupCount: int = ..., encoding: Optional[str] = ...,
-                         delay: bool = ..., utc: bool = ...) -> None: ...
-        def doRollover(self) -> None: ...
-else:
-    class TimedRotatingFileHandler:
-        def __init__(self,
-                     filename: str, when: str = ..., interval: int = ...,
-                     backupCount: int = ..., encoding: Optional[str] = ...,
-                     delay: bool = ..., utc: bool = ...) -> None: ...
+            def __init__(
+                self,
+                filename: str,
+                when: str = ...,
+                interval: int = ...,
+                backupCount: int = ...,
+                encoding: Optional[str] = ...,
+                delay: bool = ...,
+                utc: bool = ...,
+            ) -> None: ...
+
         def doRollover(self) -> None: ...
 
+else:
+    class TimedRotatingFileHandler:
+        def __init__(
+            self,
+            filename: str,
+            when: str = ...,
+            interval: int = ...,
+            backupCount: int = ...,
+            encoding: Optional[str] = ...,
+            delay: bool = ...,
+            utc: bool = ...,
+        ) -> None: ...
+        def doRollover(self) -> None: ...
 
 class SocketHandler(Handler):
     retryStart = ...  # type: float
@@ -85,14 +118,13 @@ class SocketHandler(Handler):
         def __init__(self, host: str, port: Optional[int]) -> None: ...
     else:
         def __init__(self, host: str, port: int) -> None: ...
+
     def makeSocket(self) -> SocketType: ...
     def makePickle(self, record: LogRecord) -> bytes: ...
     def send(self, packet: bytes) -> None: ...
     def createSocket(self) -> None: ...
 
-
 class DatagramHandler(SocketHandler): ...
-
 
 class SysLogHandler(Handler):
     LOG_ALERT = ...  # type: int
@@ -123,64 +155,86 @@ class SysLogHandler(Handler):
     LOG_LOCAL5 = ...  # type: int
     LOG_LOCAL6 = ...  # type: int
     LOG_LOCAL7 = ...  # type: int
-    def __init__(self, address: Union[Tuple[str, int], str] = ...,
-            facility: int = ..., socktype: SocketKind = ...) -> None: ...
-    def encodePriority(self, facility: Union[int, str],
-                       priority: Union[int, str]) -> int: ...
+    def __init__(
+        self,
+        address: Union[Tuple[str, int], str] = ...,
+        facility: int = ...,
+        socktype: SocketKind = ...,
+    ) -> None: ...
+    def encodePriority(
+        self, facility: Union[int, str], priority: Union[int, str]
+    ) -> int: ...
     def mapPriority(self, levelName: int) -> str: ...
 
-
 class NTEventLogHandler(Handler):
-    def __init__(self, appname: str, dllname: str = ...,
-                 logtype: str = ...) -> None: ...
+    def __init__(
+        self, appname: str, dllname: str = ..., logtype: str = ...
+    ) -> None: ...
     def getEventCategory(self, record: LogRecord) -> int: ...
     # TODO correct return value?
     def getEventType(self, record: LogRecord) -> int: ...
     def getMessageID(self, record: LogRecord) -> int: ...
 
-
 class SMTPHandler(Handler):
     # TODO `secure` can also be an empty tuple
     if sys.version_info >= (3,):
-        def __init__(self, mailhost: Union[str, Tuple[str, int]], fromaddr: str,
-                     toaddrs: List[str], subject: str,
-                     credentials: Optional[Tuple[str, str]] = ...,
-                     secure: Union[Tuple[str], Tuple[str, str], None] =...,
-                     timeout: float = ...) -> None: ...
+        def __init__(
+            self,
+            mailhost: Union[str, Tuple[str, int]],
+            fromaddr: str,
+            toaddrs: List[str],
+            subject: str,
+            credentials: Optional[Tuple[str, str]] = ...,
+            secure: Union[Tuple[str], Tuple[str, str], None] = ...,
+            timeout: float = ...,
+        ) -> None: ...
     else:
-        def __init__(self,
-                     mailhost: Union[str, Tuple[str, int]], fromaddr: str,
-                     toaddrs: List[str], subject: str,
-                     credentials: Optional[Tuple[str, str]] = ...,
-                     secure: Union[Tuple[str], Tuple[str, str], None] =...) -> None: ...
-    def getSubject(self, record: LogRecord) -> str: ...
+        def __init__(
+            self,
+            mailhost: Union[str, Tuple[str, int]],
+            fromaddr: str,
+            toaddrs: List[str],
+            subject: str,
+            credentials: Optional[Tuple[str, str]] = ...,
+            secure: Union[Tuple[str], Tuple[str, str], None] = ...,
+        ) -> None: ...
 
+    def getSubject(self, record: LogRecord) -> str: ...
 
 class BufferingHandler(Handler):
     def __init__(self, capacity: int) -> None: ...
     def shouldFlush(self, record: LogRecord) -> bool: ...
 
 class MemoryHandler(BufferingHandler):
-    def __init__(self, capacity: int, flushLevel: int = ...,
-                 target: Optional[Handler] =...) -> None: ...
+    def __init__(
+        self, capacity: int, flushLevel: int = ..., target: Optional[Handler] = ...
+    ) -> None: ...
     def setTarget(self, target: Handler) -> None: ...
-
 
 class HTTPHandler(Handler):
     if sys.version_info >= (3, 5):
-        def __init__(self, host: str, url: str, method: str = ...,
-                     secure: bool = ...,
-                     credentials: Optional[Tuple[str, str]] = ...,
-                     context: Optional[ssl.SSLContext] = ...) -> None: ...
+        def __init__(
+            self,
+            host: str,
+            url: str,
+            method: str = ...,
+            secure: bool = ...,
+            credentials: Optional[Tuple[str, str]] = ...,
+            context: Optional[ssl.SSLContext] = ...,
+        ) -> None: ...
     elif sys.version_info >= (3,):
-        def __init__(self,
-                     host: str, url: str, method: str = ..., secure: bool = ...,
-                     credentials: Optional[Tuple[str, str]] = ...) -> None: ...
+        def __init__(
+            self,
+            host: str,
+            url: str,
+            method: str = ...,
+            secure: bool = ...,
+            credentials: Optional[Tuple[str, str]] = ...,
+        ) -> None: ...
     else:
-        def __init__(self,
-                     host: str, url: str, method: str = ...) -> None: ...
-    def mapLogRecord(self, record: LogRecord) -> Dict[str, Any]: ...
+        def __init__(self, host: str, url: str, method: str = ...) -> None: ...
 
+    def mapLogRecord(self, record: LogRecord) -> Dict[str, Any]: ...
 
 if sys.version_info > (3,):
     class QueueHandler(Handler):
@@ -190,11 +244,15 @@ if sys.version_info > (3,):
 
     class QueueListener:
         if sys.version_info >= (3, 5):
-            def __init__(self, queue: Queue, *handlers: Handler,
-                         respect_handler_level: bool = ...) -> None: ...
+            def __init__(
+                self,
+                queue: Queue,
+                *handlers: Handler,
+                respect_handler_level: bool = ...
+            ) -> None: ...
         else:
-            def __init__(self,
-                         queue: Queue, *handlers: Handler) -> None: ...
+            def __init__(self, queue: Queue, *handlers: Handler) -> None: ...
+
         def dequeue(self, block: bool) -> LogRecord: ...
         def prepare(self, record: LogRecord) -> Any: ...
         def start(self) -> None: ...

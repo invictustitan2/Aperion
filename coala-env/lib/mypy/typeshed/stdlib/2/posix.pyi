@@ -7,50 +7,50 @@ environ = ...  # type: Dict[str, str]
 pathconf_names = ...  # type: Dict[str, int]
 sysconf_names = ...  # type: Dict[str, int]
 
-EX_CANTCREAT= ...  # type: int
-EX_CONFIG= ...  # type: int
-EX_DATAERR= ...  # type: int
-EX_IOERR= ...  # type: int
-EX_NOHOST= ...  # type: int
-EX_NOINPUT= ...  # type: int
-EX_NOPERM= ...  # type: int
-EX_NOUSER= ...  # type: int
-EX_OK= ...  # type: int
-EX_OSERR= ...  # type: int
-EX_OSFILE= ...  # type: int
-EX_PROTOCOL= ...  # type: int
-EX_SOFTWARE= ...  # type: int
-EX_TEMPFAIL= ...  # type: int
-EX_UNAVAILABLE= ...  # type: int
-EX_USAGE= ...  # type: int
-F_OK= ...  # type: int
-NGROUPS_MAX= ...  # type: int
-O_APPEND= ...  # type: int
-O_ASYNC= ...  # type: int
-O_CREAT= ...  # type: int
-O_DIRECT= ...  # type: int
-O_DIRECTORY= ...  # type: int
-O_DSYNC= ...  # type: int
-O_EXCL= ...  # type: int
-O_LARGEFILE= ...  # type: int
-O_NDELAY= ...  # type: int
-O_NOATIME= ...  # type: int
-O_NOCTTY= ...  # type: int
-O_NOFOLLOW= ...  # type: int
-O_NONBLOCK= ...  # type: int
-O_RDONLY= ...  # type: int
-O_RDWR= ...  # type: int
-O_RSYNC= ...  # type: int
-O_SYNC= ...  # type: int
-O_TRUNC= ...  # type: int
-O_WRONLY= ...  # type: int
-R_OK= ...  # type: int
-TMP_MAX= ...  # type: int
-WCONTINUED= ...  # type: int
-WNOHANG= ...  # type: int
-WUNTRACED= ...  # type: int
-W_OK= ...  # type: int
-X_OK= ...  # type: int
+EX_CANTCREAT = ...  # type: int
+EX_CONFIG = ...  # type: int
+EX_DATAERR = ...  # type: int
+EX_IOERR = ...  # type: int
+EX_NOHOST = ...  # type: int
+EX_NOINPUT = ...  # type: int
+EX_NOPERM = ...  # type: int
+EX_NOUSER = ...  # type: int
+EX_OK = ...  # type: int
+EX_OSERR = ...  # type: int
+EX_OSFILE = ...  # type: int
+EX_PROTOCOL = ...  # type: int
+EX_SOFTWARE = ...  # type: int
+EX_TEMPFAIL = ...  # type: int
+EX_UNAVAILABLE = ...  # type: int
+EX_USAGE = ...  # type: int
+F_OK = ...  # type: int
+NGROUPS_MAX = ...  # type: int
+O_APPEND = ...  # type: int
+O_ASYNC = ...  # type: int
+O_CREAT = ...  # type: int
+O_DIRECT = ...  # type: int
+O_DIRECTORY = ...  # type: int
+O_DSYNC = ...  # type: int
+O_EXCL = ...  # type: int
+O_LARGEFILE = ...  # type: int
+O_NDELAY = ...  # type: int
+O_NOATIME = ...  # type: int
+O_NOCTTY = ...  # type: int
+O_NOFOLLOW = ...  # type: int
+O_NONBLOCK = ...  # type: int
+O_RDONLY = ...  # type: int
+O_RDWR = ...  # type: int
+O_RSYNC = ...  # type: int
+O_SYNC = ...  # type: int
+O_TRUNC = ...  # type: int
+O_WRONLY = ...  # type: int
+R_OK = ...  # type: int
+TMP_MAX = ...  # type: int
+WCONTINUED = ...  # type: int
+WNOHANG = ...  # type: int
+WUNTRACED = ...  # type: int
+W_OK = ...  # type: int
+X_OK = ...  # type: int
 
 def WCOREDUMP(status: int) -> bool: ...
 def WEXITSTATUS(status: int) -> bool: ...
@@ -113,8 +113,10 @@ def fdatasync(fd: int) -> None: ...
 def fdopen(fd: int, mode: str = ..., bufsize: int = ...) -> IO[str]: ...
 def fork() -> int:
     raise OSError()
+
 def forkpty() -> Tuple[int, int]:
     raise OSError()
+
 def fpathconf(fd: int, name: str) -> None: ...
 def fstat(fd: int) -> stat_result: ...
 def fstatvfs(fd: int) -> statvfs_result: ...
@@ -128,6 +130,7 @@ def getgid() -> int: ...
 def getgroups() -> List[int]: ...
 def getloadavg() -> Tuple[float, float, float]:
     raise OSError()
+
 def getlogin() -> str: ...
 def getpgid(pid: int) -> int: ...
 def getpgrp() -> int: ...
@@ -143,7 +146,9 @@ def kill(pid: int, sig: int) -> None: ...
 def killpg(pgid: int, sig: int) -> None: ...
 def lchown(path: unicode, uid: int, gid: int) -> None: ...
 def link(source: unicode, link_name: str) -> None: ...
+
 _T = TypeVar("_T")
+
 def listdir(path: _T) -> List[_T]: ...
 def lseek(fd: int, pos: int, how: int) -> None: ...
 def lstat(path: unicode) -> stat_result: ...
@@ -196,11 +201,16 @@ def unsetenv(varname: str) -> None: ...
 def urandom(n: int) -> str: ...
 def utime(path: unicode, times: Optional[Tuple[int, int]]) -> None:
     raise OSError
+
 def wait() -> int: ...
-_r = Tuple[float, float, int, int, int, int, int, int, int, int, int, int, int, int, int, int]
+
+_r = Tuple[
+    float, float, int, int, int, int, int, int, int, int, int, int, int, int, int, int
+]
+
 def wait3(options: int) -> Tuple[int, int, _r]: ...
 def wait4(pid: int, options: int) -> Tuple[int, int, _r]: ...
 def waitpid(pid: int, options: int) -> int:
     raise OSError()
-def write(fd: int, str: str) -> int: ...
 
+def write(fd: int, str: str) -> int: ...

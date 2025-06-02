@@ -10,11 +10,18 @@ _B = Union[bytes, bytearray]
 _Hash = Any
 
 if sys.version_info >= (3, 4):
-    def new(key: _B, msg: Optional[_B] = ...,
-            digestmod: Optional[Union[str, Callable[[], _Hash], ModuleType]] = ...) -> HMAC: ...
+    def new(
+        key: _B,
+        msg: Optional[_B] = ...,
+        digestmod: Optional[Union[str, Callable[[], _Hash], ModuleType]] = ...,
+    ) -> HMAC: ...
+
 else:
-    def new(key: _B, msg: Optional[_B] = ...,
-            digestmod: Optional[Union[Callable[[], _Hash], ModuleType]] = ...) -> HMAC: ...
+    def new(
+        key: _B,
+        msg: Optional[_B] = ...,
+        digestmod: Optional[Union[Callable[[], _Hash], ModuleType]] = ...,
+    ) -> HMAC: ...
 
 class HMAC:
     if sys.version_info >= (3,):
@@ -22,6 +29,7 @@ class HMAC:
     if sys.version_info >= (3, 4):
         block_size = ...  # type: int
         name = ...  # type: str
+
     def update(self, msg: _B) -> None: ...
     def digest(self) -> bytes: ...
     def hexdigest(self) -> str: ...

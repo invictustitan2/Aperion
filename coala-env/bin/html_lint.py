@@ -42,20 +42,17 @@ Options:
 
 """
 
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import sys
 
 import docopt
 import html_linter
 
-__VERSION__ = '0.3.0'
+__VERSION__ = "0.3.0"
 
 
-if __name__ == '__main__':
-    options = docopt.docopt(__doc__,
-                            help=True,
-                            version='html5_lint v%s' % __VERSION__)
+if __name__ == "__main__":
+    options = docopt.docopt(__doc__, help=True, version="html5_lint v%s" % __VERSION__)
 
     sys.exit(html_linter.main(options))

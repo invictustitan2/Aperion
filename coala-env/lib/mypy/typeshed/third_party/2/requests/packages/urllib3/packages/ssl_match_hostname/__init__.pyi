@@ -1,1 +1,2 @@
-class CertificateError(ValueError): pass
+class CertificateError(ValueError):
+    pass

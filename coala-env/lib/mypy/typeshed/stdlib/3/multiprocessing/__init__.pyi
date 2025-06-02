@@ -3,81 +3,103 @@
 from multiprocessing.process import current_process as current_process
 from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional
 
-class Lock():
+class Lock:
     def acquire(self, block: bool = ..., timeout: int = ...) -> None: ...
     def release(self) -> None: ...
 
-class AsyncResult():
+class AsyncResult:
     def get(self, timeout: float = -1) -> Any: ...
     def wait(self, timeout: float = -1) -> None: ...
     def ready(self) -> bool: ...
     def successful(self) -> bool: ...
 
-class Pool():
-    def __init__(self, processes: Optional[int] = None,
-                 initializer: Optional[Callable[..., None]] = None,
-                 initargs: Iterable[Any] = (),
-                 maxtasksperchild: Optional[int] = None,
-                 context: Any = None) -> None: ...
-    def apply(self,
-              func: Callable[..., Any],
-              args: Iterable[Any]=(),
-              kwds: Dict[str, Any]={}) -> Any: ...
-    def apply_async(self,
-                func: Callable[..., Any],
-                args: Iterable[Any]=(),
-                kwds: Dict[str, Any]={},
-                callback: Callable[..., None] = None,
-                error_callback: Callable[[BaseException], None] = None) -> AsyncResult: ...
-    def map(self,
-            func: Callable[..., Any],
-            iterable: Iterable[Any]=(),
-            chunksize: Optional[int] = None) -> List[Any]: ...
-    def map_async(self, func: Callable[..., Any],
-                  iterable: Iterable[Any] = (),
-                  chunksize: Optional[int] = None,
-                  callback: Callable[..., None] = None,
-                  error_callback: Callable[[BaseException], None] = None) -> AsyncResult: ...
-    def imap(self,
-             func: Callable[..., Any],
-             iterable: Iterable[Any]=(),
-             chunksize: Optional[int] = None) -> Iterable[Any]: ...
-    def imap_unordered(self,
-                       func: Callable[..., Any],
-                       iterable: Iterable[Any]=(),
-                       chunksize: Optional[int] = None) -> Iterable[Any]: ...
-    def starmap(self,
-                func: Callable[..., Any],
-                iterable: Iterable[Iterable[Any]]=(),
-                chunksize: Optional[int] = None) -> List[Any]: ...
-    def starmap_async(self,
-                      func: Callable[..., Any],
-                      iterable: Iterable[Iterable[Any]] = (),
-                      chunksize: Optional[int] = None,
-                      callback: Callable[..., None] = None,
-                      error_callback: Callable[[BaseException], None] = None) -> AsyncResult: ...
+class Pool:
+    def __init__(
+        self,
+        processes: Optional[int] = None,
+        initializer: Optional[Callable[..., None]] = None,
+        initargs: Iterable[Any] = (),
+        maxtasksperchild: Optional[int] = None,
+        context: Any = None,
+    ) -> None: ...
+    def apply(
+        self,
+        func: Callable[..., Any],
+        args: Iterable[Any] = (),
+        kwds: Dict[str, Any] = {},
+    ) -> Any: ...
+    def apply_async(
+        self,
+        func: Callable[..., Any],
+        args: Iterable[Any] = (),
+        kwds: Dict[str, Any] = {},
+        callback: Callable[..., None] = None,
+        error_callback: Callable[[BaseException], None] = None,
+    ) -> AsyncResult: ...
+    def map(
+        self,
+        func: Callable[..., Any],
+        iterable: Iterable[Any] = (),
+        chunksize: Optional[int] = None,
+    ) -> List[Any]: ...
+    def map_async(
+        self,
+        func: Callable[..., Any],
+        iterable: Iterable[Any] = (),
+        chunksize: Optional[int] = None,
+        callback: Callable[..., None] = None,
+        error_callback: Callable[[BaseException], None] = None,
+    ) -> AsyncResult: ...
+    def imap(
+        self,
+        func: Callable[..., Any],
+        iterable: Iterable[Any] = (),
+        chunksize: Optional[int] = None,
+    ) -> Iterable[Any]: ...
+    def imap_unordered(
+        self,
+        func: Callable[..., Any],
+        iterable: Iterable[Any] = (),
+        chunksize: Optional[int] = None,
+    ) -> Iterable[Any]: ...
+    def starmap(
+        self,
+        func: Callable[..., Any],
+        iterable: Iterable[Iterable[Any]] = (),
+        chunksize: Optional[int] = None,
+    ) -> List[Any]: ...
+    def starmap_async(
+        self,
+        func: Callable[..., Any],
+        iterable: Iterable[Iterable[Any]] = (),
+        chunksize: Optional[int] = None,
+        callback: Callable[..., None] = None,
+        error_callback: Callable[[BaseException], None] = None,
+    ) -> AsyncResult: ...
     def close(self) -> None: ...
     def terminate(self) -> None: ...
     def join(self) -> None: ...
-    def __enter__(self) -> 'Pool': ...
+    def __enter__(self) -> "Pool": ...
     def __exit__(self, exc_type, exc_val, exc_tb) -> None: ...
 
-class Process():
+class Process:
     # TODO: set type of group to None
-    def __init__(self,
-                 group: Any = ...,
-                 target: Callable = ...,
-                 name: str = ...,
-                 args: Iterable[Any] = ...,
-                 kwargs: Mapping[Any, Any] = ...,
-                 daemon: bool = ...) -> None: ...
+    def __init__(
+        self,
+        group: Any = ...,
+        target: Callable = ...,
+        name: str = ...,
+        args: Iterable[Any] = ...,
+        kwargs: Mapping[Any, Any] = ...,
+        daemon: bool = ...,
+    ) -> None: ...
     def start(self) -> None: ...
     def run(self) -> None: ...
     def terminate(self) -> None: ...
     def is_alive(self) -> bool: ...
     def join(self, timeout: float = ...) -> None: ...
 
-class Queue():
+class Queue:
     def __init__(self, maxsize: int = ...) -> None: ...
     def get(self, block: bool = ..., timeout: float = ...) -> Any: ...
     def put(self, item: Any, block: bool = ..., timeout: float = ...) -> None: ...
@@ -90,7 +112,7 @@ class Queue():
     def join_thread(self) -> None: ...
     def cancel_join_thread(self) -> None: ...
 
-class Value():
+class Value:
     def __init__(self, typecode_or_type: str, *args: Any, lock: bool = ...) -> None: ...
 
 # ----- multiprocessing function stubs -----

@@ -4,7 +4,7 @@
 
 from typing import IO, Any
 
-#from .packages import six
+# from .packages import six
 from . import _collections, exceptions
 from .util import response
 
@@ -12,8 +12,8 @@ HTTPHeaderDict = _collections.HTTPHeaderDict
 ProtocolError = exceptions.ProtocolError
 DecodeError = exceptions.DecodeError
 ReadTimeoutError = exceptions.ReadTimeoutError
-binary_type = str # six.binary_type
-PY3 = True # six.PY3
+binary_type = str  # six.binary_type
+PY3 = True  # six.PY3
 is_fp_closed = response.is_fp_closed
 
 class DeflateDecoder:
@@ -35,7 +35,20 @@ class HTTPResponse(IO[Any]):
     reason = ...  # type: Any
     strict = ...  # type: Any
     decode_content = ...  # type: Any
-    def __init__(self, body=..., headers=..., status=..., version=..., reason=..., strict=..., preload_content=..., decode_content=..., original_response=..., pool=..., connection=...) -> None: ...
+    def __init__(
+        self,
+        body=...,
+        headers=...,
+        status=...,
+        version=...,
+        reason=...,
+        strict=...,
+        preload_content=...,
+        decode_content=...,
+        original_response=...,
+        pool=...,
+        connection=...,
+    ) -> None: ...
     def get_redirect_location(self): ...
     def release_conn(self): ...
     @property

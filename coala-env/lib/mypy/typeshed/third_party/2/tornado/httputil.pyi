@@ -9,8 +9,8 @@ from tornado.util import ObjectDict
 class SSLError(Exception): ...
 
 class _NormalizedHeaderCache(dict):
-    size = ... # type: Any
-    queue = ... # type: Any
+    size = ...  # type: Any
+    queue = ...  # type: Any
     def __init__(self, size) -> None: ...
     def __missing__(self, key): ...
 
@@ -29,24 +29,35 @@ class HTTPHeaders(dict):
     def get(self, name, default=...): ...
     def update(self, *args, **kwargs): ...
     def copy(self): ...
-    __copy__ = ... # type: Any
+    __copy__ = ...  # type: Any
     def __deepcopy__(self, memo_dict): ...
 
 class HTTPServerRequest:
-    method = ... # type: Any
-    uri = ... # type: Any
-    version = ... # type: Any
-    headers = ... # type: Any
-    body = ... # type: Any
-    remote_ip = ... # type: Any
-    protocol = ... # type: Any
-    host = ... # type: Any
-    files = ... # type: Any
-    connection = ... # type: Any
-    arguments = ... # type: Any
-    query_arguments = ... # type: Any
-    body_arguments = ... # type: Any
-    def __init__(self, method=..., uri=..., version=..., headers=..., body=..., host=..., files=..., connection=..., start_line=...) -> None: ...
+    method = ...  # type: Any
+    uri = ...  # type: Any
+    version = ...  # type: Any
+    headers = ...  # type: Any
+    body = ...  # type: Any
+    remote_ip = ...  # type: Any
+    protocol = ...  # type: Any
+    host = ...  # type: Any
+    files = ...  # type: Any
+    connection = ...  # type: Any
+    arguments = ...  # type: Any
+    query_arguments = ...  # type: Any
+    body_arguments = ...  # type: Any
+    def __init__(
+        self,
+        method=...,
+        uri=...,
+        version=...,
+        headers=...,
+        body=...,
+        host=...,
+        files=...,
+        connection=...,
+        start_line=...,
+    ) -> None: ...
     def supports_http_1_1(self): ...
     @property
     def cookies(self): ...
@@ -82,11 +93,11 @@ def parse_body_arguments(content_type, body, arguments, files, headers=...): ...
 def parse_multipart_form_data(boundary, data, arguments, files): ...
 def format_timestamp(ts): ...
 
-RequestStartLine = namedtuple('RequestStartLine', ['method', 'path', 'version'])
+RequestStartLine = namedtuple("RequestStartLine", ["method", "path", "version"])
 
 def parse_request_start_line(line): ...
 
-ResponseStartLine = namedtuple('ResponseStartLine', ['version', 'code', 'reason'])
+ResponseStartLine = namedtuple("ResponseStartLine", ["version", "code", "reason"])
 
 def parse_response_start_line(line): ...
 def doctests(): ...

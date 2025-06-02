@@ -1,7 +1,5 @@
 # Stubs for requests.packages.urllib3.connection (Python 3.4)
 
-
-
 from . import exceptions
 
 class DummyConnection: ...
@@ -26,7 +24,9 @@ class HTTPSConnection(HTTPConnection):
     default_port = ...  # type: Any
     key_file = ...  # type: Any
     cert_file = ...  # type: Any
-    def __init__(self, host, port=..., key_file=..., cert_file=..., strict=..., timeout=..., **kw) -> None: ...
+    def __init__(
+        self, host, port=..., key_file=..., cert_file=..., strict=..., timeout=..., **kw
+    ) -> None: ...
     sock = ...  # type: Any
     def connect(self): ...
 
@@ -38,7 +38,15 @@ class VerifiedHTTPSConnection(HTTPSConnection):
     key_file = ...  # type: Any
     cert_file = ...  # type: Any
     assert_hostname = ...  # type: Any
-    def set_cert(self, key_file=..., cert_file=..., cert_reqs=..., ca_certs=..., assert_hostname=..., assert_fingerprint=...): ...
+    def set_cert(
+        self,
+        key_file=...,
+        cert_file=...,
+        cert_reqs=...,
+        ca_certs=...,
+        assert_hostname=...,
+        assert_fingerprint=...,
+    ): ...
     sock = ...  # type: Any
     auto_open = ...  # type: Any
     is_verified = ...  # type: Any
@@ -46,4 +54,5 @@ class VerifiedHTTPSConnection(HTTPSConnection):
 
 UnverifiedHTTPSConnection = ...  # type: Any
 
-class ConnectionError(Exception): pass
+class ConnectionError(Exception):
+    pass

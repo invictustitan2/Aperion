@@ -2,8 +2,7 @@
 
 # Based on http://docs.python.org/3.2/library/string.html
 
-from typing import (Any, AnyStr, Iterable, List, Mapping, Sequence,
-                    Tuple, Union)
+from typing import Any, AnyStr, Iterable, List, Mapping, Sequence, Tuple, Union
 
 ascii_letters = ...  # type: str
 ascii_lowercase = ...  # type: str
@@ -19,6 +18,7 @@ uppercase = ...  # type: str
 whitespace = ...  # type: str
 
 def capwords(s: AnyStr, sep: AnyStr = ...) -> AnyStr: ...
+
 # TODO: originally named 'from'
 def maketrans(_from: str, to: str) -> str: ...
 def atof(s: unicode) -> float: ...
@@ -54,22 +54,29 @@ class Template(object):
 
     def __init__(self, template: str) -> None: ...
     def substitute(self, mapping: Mapping[str, str] = ..., **kwds: str) -> str: ...
-    def safe_substitute(self, mapping: Mapping[str, str] = ...,
-                        **kwds: str) -> str: ...
+    def safe_substitute(self, mapping: Mapping[str, str] = ..., **kwds: str) -> str: ...
 
 # TODO(MichalPokorny): This is probably badly and/or loosely typed.
 class Formatter(object):
     def format(self, format_string: str, *args, **kwargs) -> str: ...
-    def vformat(self, format_string: str, args: Sequence[Any],
-                kwargs: Mapping[str, Any]) -> str: ...
+    def vformat(
+        self, format_string: str, args: Sequence[Any], kwargs: Mapping[str, Any]
+    ) -> str: ...
     def parse(self, format_string: str) -> Iterable[Tuple[str, str, str, str]]: ...
-    def get_field(self, field_name: str, args: Sequence[Any],
-                  kwargs: Mapping[str, Any]) -> Any: ...
-    def get_value(self, key: Union[int, str], args: Sequence[Any],
-                  kwargs: Mapping[str, Any]) -> Any:
+    def get_field(
+        self, field_name: str, args: Sequence[Any], kwargs: Mapping[str, Any]
+    ) -> Any: ...
+    def get_value(
+        self, key: Union[int, str], args: Sequence[Any], kwargs: Mapping[str, Any]
+    ) -> Any:
         raise IndexError()
         raise KeyError()
-    def check_unused_args(self, used_args: Sequence[Union[int, str]], args: Sequence[Any],
-                          kwargs: Mapping[str, Any]) -> None: ...
+
+    def check_unused_args(
+        self,
+        used_args: Sequence[Union[int, str]],
+        args: Sequence[Any],
+        kwargs: Mapping[str, Any],
+    ) -> None: ...
     def format_field(self, value: Any, format_spec: str) -> Any: ...
     def convert_field(self, value: Any, conversion: str) -> Any: ...

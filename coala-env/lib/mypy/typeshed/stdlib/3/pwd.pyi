@@ -2,7 +2,6 @@
 
 # NOTE: These are incomplete!
 
-
 class struct_passwd:
     # TODO use namedtuple
     pw_name = ...  # type: str

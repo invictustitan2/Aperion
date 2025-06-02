@@ -3,8 +3,7 @@
 import sys
 from enum import IntEnum
 from types import FrameType
-from typing import (Any, Callable, Iterable, Optional,
-                    Set, Tuple, Union)
+from typing import Any, Callable, Iterable, Optional, Set, Tuple, Union
 
 class ItimerError(IOError): ...
 
@@ -119,8 +118,8 @@ SIGWINCH = ...  # type: _SIG
 SIGXCPU = ...  # type: _SIG
 SIGXFSZ = ...  # type: _SIG
 
-CTRL_C_EVENT = 0 # Windows
-CTRL_BREAK_EVENT = 0 # Windows
+CTRL_C_EVENT = 0  # Windows
+CTRL_BREAK_EVENT = 0  # Windows
 
 class struct_siginfo(Tuple[int, int, int, int, int, int, int]):
     def __init__(self, sequence: Iterable[int]) -> None: ...
@@ -140,17 +139,14 @@ class struct_siginfo(Tuple[int, int, int, int, int, int, int]):
     def si_band(self) -> int: ...
 
 def alarm(time: int) -> int: ...
-
 def default_int_handler(signum: int, frame: FrameType) -> None:
     raise KeyboardInterrupt()
 
 def getitimer(which: int) -> Tuple[float, float]: ...
-
 def getsignal(signalnum: _SIGNUM) -> _HANDLER:
     raise ValueError()
 
 def pause() -> None: ...
-
 def pthread_kill(thread_id: int, signum: int) -> None:
     raise OSError()
 
@@ -158,9 +154,9 @@ def pthread_sigmask(how: int, mask: Iterable[int]) -> Set[_SIGNUM]:
     raise OSError()
 
 def set_wakeup_fd(fd: int) -> int: ...
-
-def setitimer(which: int, seconds: float, interval: float = ...) -> Tuple[float, float]: ...
-
+def setitimer(
+    which: int, seconds: float, interval: float = ...
+) -> Tuple[float, float]: ...
 def siginterrupt(signalnum: int, flag: bool) -> None:
     raise OSError()
 

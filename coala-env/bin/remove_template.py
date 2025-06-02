@@ -29,8 +29,7 @@ Options:
   --version        Show version.
 """
 
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import codecs
 import io
@@ -39,7 +38,7 @@ import sys
 import docopt
 import template_remover
 
-__VERSION__ = '0.1'
+__VERSION__ = "0.1"
 
 
 def main():
@@ -49,13 +48,14 @@ def main():
     if sys.version_info[0] < 3:
         sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
 
-    options = docopt.docopt(__doc__,
-                            help=True,
-                            version='template_remover v%s' % __VERSION__)
+    options = docopt.docopt(
+        __doc__, help=True, version="template_remover v%s" % __VERSION__
+    )
 
-    print(template_remover.clean(io.open(options['FILENAME']).read()))
+    print(template_remover.clean(io.open(options["FILENAME"]).read()))
 
     return 0
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     sys.exit(main())

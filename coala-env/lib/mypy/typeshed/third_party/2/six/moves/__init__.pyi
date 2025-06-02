@@ -1,6 +1,5 @@
 # Provisional stubs for six.moves (Python 2.7)
 
-
 from __builtin__ import intern as intern
 from __builtin__ import reduce as reduce
 from __builtin__ import xrange as xrange

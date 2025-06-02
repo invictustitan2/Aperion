@@ -1,4 +1,3 @@
-
 cmp_op = ...  # type: Sequence[str]
 hasconst = ...  # type: List[int]
 hasname = ...  # type: List[int]

@@ -2,7 +2,8 @@
 
 from typing import Sequence, TypeVar
 
-T = TypeVar('T')
+T = TypeVar("T")
+
 def bisect(a: Sequence[T], x: T, lo: int = ..., hi: int = ...) -> int: ...
 def bisect_left(a: Sequence[T], x: T, lo: int = ..., hi: int = ...) -> int: ...
 def bisect_right(a: Sequence[T], x: T, lo: int = ..., hi: int = ...) -> int: ...

@@ -7,5 +7,6 @@ class md5(object):
     def copy(self) -> md5: ...
 
 def new(string: str = ...) -> md5: ...
+
 blocksize = 0
 digest_size = 0

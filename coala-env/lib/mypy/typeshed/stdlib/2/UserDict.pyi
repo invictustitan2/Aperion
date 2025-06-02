@@ -1,18 +1,29 @@
-from typing import (Any, Container, Dict, Generic, Iterable, Iterator, List,
-                    Mapping, Sized, Tuple, TypeVar, overload)
+from typing import (
+    Any,
+    Container,
+    Dict,
+    Generic,
+    Iterable,
+    Iterator,
+    List,
+    Mapping,
+    Sized,
+    Tuple,
+    TypeVar,
+    overload,
+)
 
-_KT = TypeVar('_KT')
-_VT = TypeVar('_VT')
+_KT = TypeVar("_KT")
+_VT = TypeVar("_VT")
 
 class UserDict(Dict[_KT, _VT], Generic[_KT, _VT]):
-    data = ... # type: Mapping[_KT, _VT]
+    data = ...  # type: Mapping[_KT, _VT]
 
     def __init__(self, initialdata: Mapping[_KT, _VT] = ...) -> None: ...
 
     # TODO: __iter__ is not available for UserDict
 
-class IterableUserDict(UserDict[_KT, _VT], Generic[_KT, _VT]):
-    ...
+class IterableUserDict(UserDict[_KT, _VT], Generic[_KT, _VT]): ...
 
 class DictMixin(Sized, Iterable[_KT], Container[_KT], Generic[_KT, _VT]):
     def has_key(self, key: _KT) -> bool: ...
