@@ -1,0 +1,280 @@
+
+===== Python auto-formatting (aperion.cc) =====
+
+===== Python linting (Ruff) (aperion.cc) =====
+
+===== Python linting (Flake8) (aperion.cc) =====
+
+===== Python linting (Pylint) (aperion.cc) =====
+
+===== JavaScript linting (ESLint) (aperion.cc) =====
+
+===== CSS linting (Stylelint) (aperion.cc) =====
+All checks passed!
+
+===== Markdown linting (Markdownlint) (aperion.cc) =====
+
+===== Shell script linting (aperion.cc) =====
+In aperion.cc/verity_check.sh line 9:
+	find $BASE_DIR -type f | sort | while read f; do
+             ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+                                              ^--^ SC2162: read without -r will mangle backslashes.
+
+Did you mean: 
+	find "$BASE_DIR" -type f | sort | while read f; do
+
+
+In aperion.cc/verity_check.sh line 12:
+	echo "🔍 Manifest created for $(basename $BASE_DIR)"
+                                                ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	echo "🔍 Manifest created for $(basename "$BASE_DIR")"
+
+
+In aperion.cc/aperion_verity_suite.sh line 21:
+	find $BASE_DIR -type f | sort | while read f; do
+             ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+                                              ^--^ SC2162: read without -r will mangle backslashes.
+
+Did you mean: 
+	find "$BASE_DIR" -type f | sort | while read f; do
+
+
+In aperion.cc/aperion_verity_suite.sh line 24:
+	echo "✅ Manifest created for $(basename $BASE_DIR)"
+                                                ^-------^ SC2086: Double quote to prevent globbing and word splitting.
+
+Did you mean: 
+	echo "✅ Manifest created for $(basename "$BASE_DIR")"
+
+
+In aperion.cc/scripts/setup.sh line 28:
+sudo cp -r $(pwd) /var/www/aperion.cc
+           ^----^ SC2046: Quote this to prevent word splitting.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
+
+===== Shell script auto-formatting (aperion.cc) =====
+
+===== C/C++ linting (Cppcheck) (aperion.cc) =====
+
+===== Python auto-formatting (scripts) =====
+All done! ✨ 🍰 ✨
+1 file left unchanged.
+
+===== Python linting (Ruff) (scripts) =====
+All checks passed!
+
+===== Python linting (Flake8) (scripts) =====
+Checking aperion.cc/coala-env-old/lib/python3.9/site-packages/lazy_object_proxy/cext.c ...
+Checking aperion.cc/coala-env-old/lib/python3.9/site-packages/lazy_object_proxy/cext.c: Py_GIL_DISABLED...
+
+===== Python linting (Pylint) (scripts) =====
+aperion.cc/static/css/style.css
+  1:6   ✖  Expected no more than 1 declaration  declaration-block-single-line-max-declarations
+  2:12  ✖  Expected no more than 1 declaration  declaration-block-single-line-max-declarations
+  3:4   ✖  Expected no more than 1 declaration  declaration-block-single-line-max-declarations
+  5:14  ✖  Expected no more than 1 declaration  declaration-block-single-line-max-declarations
+  6:20  ✖  Expected no more than 1 declaration  declaration-block-single-line-max-declarations
+
+aperion.cc/cavern-of-evil/static/css/game.css
+  1:15  ✖  Expected no more than 1 declaration  declaration-block-single-line-max-declarations
+
+aperion.cc/projects/cavern-of-evil/static/css/game.css
+  1:15  ✖  Expected no more than 1 declaration  declaration-block-single-line-max-declarations
+
+✖ 7 problems (7 errors, 0 warnings)
+
+===== JavaScript linting (ESLint) (scripts) =====
+************* Module aperion.cc.app
+aperion.cc/app.py:30:0: C0301: Line too long (123/100) (line-too-long)
+aperion.cc/app.py:35:0: C0301: Line too long (142/100) (line-too-long)
+aperion.cc/app.py:39:0: C0301: Line too long (138/100) (line-too-long)
+aperion.cc/app.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+aperion.cc/app.py:3:0: E0401: Unable to import 'flask' (import-error)
+aperion.cc/app.py:9:0: C0116: Missing function or method docstring (missing-function-docstring)
+aperion.cc/app.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+aperion.cc/app.py:47:0: C0116: Missing function or method docstring (missing-function-docstring)
+aperion.cc/app.py:60:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module aperion.cc.index_app
+aperion.cc/index_app.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+aperion.cc/index_app.py:1:0: E0401: Unable to import 'flask' (import-error)
+aperion.cc/index_app.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+-----------------------------------
+Your code has been rated at 6.43/10
+
+===== CSS linting (Stylelint) (scripts) =====
+
+===== Markdown linting (Markdownlint) (scripts) =====
+Oops! Something went wrong! :(
+
+ESLint: 9.28.0
+
+You are linting "scripts", but all of the files matching the glob pattern "scripts" are ignored.
+
+If you don't want to lint these files, remove the pattern "scripts" from the list of arguments passed to ESLint.
+
+If you do want to lint these files, explicitly list one or more of the files from this glob that you'd like to lint to see more details about why they are ignored.
+
+  * If the file is ignored because of a matching ignore pattern, check global ignores in your config file.
+    https://eslint.org/docs/latest/use/configure/ignore
+
+  * If the file is ignored because no matching configuration was supplied, check file patterns in your config file.
+    https://eslint.org/docs/latest/use/configure/configuration-files#specifying-files-with-arbitrary-extensions
+
+  * If the file is ignored because it is located outside of the base path, change the location of your config file to be in a parent directory.
+
+===== Shell script linting (scripts) =====
+
+===== Shell script auto-formatting (scripts) =====
+Usage: markdownlint [options] [files|directories|globs...]
+
+MarkdownLint Command Line Interface
+
+Arguments:
+  files|directories|globs                    files, directories, and/or globs to lint
+
+Options:
+  -V, --version                              output the version number
+  -c, --config <configFile>                  configuration file (JSON, JSONC, JS, YAML, or TOML)
+  --configPointer <pointer>                  JSON Pointer to object within configuration file (default: "")
+  -d, --dot                                  include files/folders with a dot (for example `.github`)
+  -f, --fix                                  fix basic errors (does not work with STDIN)
+  -i, --ignore <file|directory|glob>         file(s) to ignore/exclude (default: [])
+  -j, --json                                 write issues in json format
+  -o, --output <outputFile>                  write issues to file (no console)
+  -p, --ignore-path <file>                   path to file with ignore pattern(s)
+  -q, --quiet                                do not write issues to STDOUT
+  -r, --rules <file|directory|glob|package>  include custom rule files (default: [])
+  -s, --stdin                                read from STDIN (does not work with files)
+  --enable <rules...>                        Enable certain rules, e.g. --enable MD013 MD041 --
+  --disable <rules...>                       Disable certain rules, e.g. --disable MD013 MD041 --
+  -h, --help                                 display help for command
+
+===== Python auto-formatting (projects) =====
+
+===== Python linting (Ruff) (projects) =====
+All checks passed!
+
+===== Python linting (Flake8) (projects) =====
+projects/cavern-of-evil/rooms/cavern_entrance.py:6:80: E501 line too long (91 > 79 characters)
+
+===== Python linting (Pylint) (projects) =====
+All done! ✨ 🍰 ✨
+8 files left unchanged.
+
+===== JavaScript linting (ESLint) (projects) =====
+NoFilesFoundError: No files matching the pattern "scripts/**/*.css" were found.
+    at standalone (file:///usr/lib/node_modules/stylelint/lib/standalone.mjs:292:43)
+
+===== CSS linting (Stylelint) (projects) =====
+
+===== Markdown linting (Markdownlint) (projects) =====
+Oops! Something went wrong! :(
+
+ESLint: 9.28.0
+
+You are linting "projects", but all of the files matching the glob pattern "projects" are ignored.
+
+If you don't want to lint these files, remove the pattern "projects" from the list of arguments passed to ESLint.
+
+If you do want to lint these files, explicitly list one or more of the files from this glob that you'd like to lint to see more details about why they are ignored.
+
+  * If the file is ignored because of a matching ignore pattern, check global ignores in your config file.
+    https://eslint.org/docs/latest/use/configure/ignore
+
+  * If the file is ignored because no matching configuration was supplied, check file patterns in your config file.
+    https://eslint.org/docs/latest/use/configure/configuration-files#specifying-files-with-arbitrary-extensions
+
+  * If the file is ignored because it is located outside of the base path, change the location of your config file to be in a parent directory.
+Usage: markdownlint [options] [files|directories|globs...]
+
+MarkdownLint Command Line Interface
+
+Arguments:
+  files|directories|globs                    files, directories, and/or globs to lint
+
+Options:
+  -V, --version                              output the version number
+  -c, --config <configFile>                  configuration file (JSON, JSONC, JS, YAML, or TOML)
+  --configPointer <pointer>                  JSON Pointer to object within configuration file (default: "")
+  -d, --dot                                  include files/folders with a dot (for example `.github`)
+  -f, --fix                                  fix basic errors (does not work with STDIN)
+  -i, --ignore <file|directory|glob>         file(s) to ignore/exclude (default: [])
+  -j, --json                                 write issues in json format
+  -o, --output <outputFile>                  write issues to file (no console)
+  -p, --ignore-path <file>                   path to file with ignore pattern(s)
+  -q, --quiet                                do not write issues to STDOUT
+  -r, --rules <file|directory|glob|package>  include custom rule files (default: [])
+  -s, --stdin                                read from STDIN (does not work with files)
+  --enable <rules...>                        Enable certain rules, e.g. --enable MD013 MD041 --
+  --disable <rules...>                       Disable certain rules, e.g. --disable MD013 MD041 --
+  -h, --help                                 display help for command
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/astroid/tests/testdata/python2/data/invalid_encoding.py: unknown encoding: lala
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/astroid/tests/testdata/python2/data/all.py: Cannot parse: 6:18: def func(): print 'yo'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/astroid/tests/testdata/python2/data/module2.py: Cannot parse: 78:5: exec 'c = 3'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/astroid/tests/testdata/python2/data/noendingnewline.py: Cannot parse: 21:18:             print 'a'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/astroid/tests/testdata/python2/data/module.py: Cannot parse: 72:13:         exec a in b
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/astroid/tests/testdata/python3/data/invalid_encoding.py: unknown encoding: lala
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/class_members_py27.py: Cannot parse: 26:14:         print self.nonexistent
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/exec_used_py2.py: Cannot parse: 3:5: exec 'a = __revision__' # [exec-used]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/iterable_context_py2.py: Cannot parse: 16:10:     print i
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/anomalous_unicode_escape_py2.py: cannot use --safe with this file; failed to parse source file AST: invalid syntax (<unknown>, line 17)
+This could be caused by running Black with an older Python version that does not support new syntax used in your source file.
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/old_division_manually.py: Cannot parse: 3:6: print 1 / 3
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/print_always_warns.py: Cannot parse: 8:10:     print "Python 3 fails to parse print statements." # [print-statement]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/redefine_in_handler.py: Cannot parse: 26:14:         print exc
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/syntax_error.py: Cannot parse: 1:25: def toto # [syntax-error]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/tokenize_error.py: Cannot parse: 7:0: EOF in multi-line statement
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/tokenize_error_jython.py: Cannot parse: 8:0: EOF in multi-line statement
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/unpacked_exceptions.py: Cannot parse: 8:14:         print errno, message  # pylint: disable=print-statement
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/functional/syntax_error_jython.py: Cannot parse: 1:25: def toto # [syntax-error]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/input/func_w0332_py_30.py: cannot use --safe with this file; failed to parse source file AST: invalid syntax (<unknown>, line 4)
+This could be caused by running Black with an older Python version that does not support new syntax used in your source file.
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/input/func_w0122_py_30.py: Cannot parse: 5:5: exec 'a = __revision__'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/regrtest_data/bad_package/__init__.py: Cannot parse: 3:22: raise missing.Missing..
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/regrtest_data/descriptor_crash.py: Cannot parse: 21:10:     print p.getPage(sys.argv[1])
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/regrtest_data/py3k_errors_and_warnings.py: Cannot parse: 19:6: print 'not in python3'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/regrtest_data/py3k_error_flag.py: cannot use --safe with this file; failed to parse source file AST: invalid syntax (<unknown>, line 4)
+This could be caused by running Black with an older Python version that does not support new syntax used in your source file.
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib/python3.9/site-packages/pylint/test/regrtest_data/syntax_error.py: Cannot parse: 1:8: class A extends B {}
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/astroid/tests/testdata/python2/data/all.py: Cannot parse: 6:18: def func(): print 'yo'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/astroid/tests/testdata/python2/data/invalid_encoding.py: unknown encoding: lala
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/astroid/tests/testdata/python2/data/module2.py: Cannot parse: 78:5: exec 'c = 3'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/astroid/tests/testdata/python2/data/noendingnewline.py: Cannot parse: 21:18:             print 'a'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/astroid/tests/testdata/python3/data/invalid_encoding.py: unknown encoding: lala
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/anomalous_unicode_escape_py2.py: cannot use --safe with this file; failed to parse source file AST: invalid syntax (<unknown>, line 17)
+This could be caused by running Black with an older Python version that does not support new syntax used in your source file.
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/astroid/tests/testdata/python2/data/module.py: Cannot parse: 72:13:         exec a in b
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/class_members_py27.py: Cannot parse: 26:14:         print self.nonexistent
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/exec_used_py2.py: Cannot parse: 3:5: exec 'a = __revision__' # [exec-used]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/old_division_manually.py: Cannot parse: 3:6: print 1 / 3
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/print_always_warns.py: Cannot parse: 8:10:     print "Python 3 fails to parse print statements." # [print-statement]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/iterable_context_py2.py: Cannot parse: 16:10:     print i
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/syntax_error.py: Cannot parse: 1:25: def toto # [syntax-error]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/syntax_error_jython.py: Cannot parse: 1:25: def toto # [syntax-error]
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/tokenize_error.py: Cannot parse: 7:0: EOF in multi-line statement
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/redefine_in_handler.py: Cannot parse: 26:14:         print exc
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/unpacked_exceptions.py: Cannot parse: 8:14:         print errno, message  # pylint: disable=print-statement
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/functional/tokenize_error_jython.py: Cannot parse: 8:0: EOF in multi-line statement
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/input/func_w0122_py_30.py: Cannot parse: 5:5: exec 'a = __revision__'
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/input/func_w0332_py_30.py: cannot use --safe with this file; failed to parse source file AST: invalid syntax (<unknown>, line 4)
+This could be caused by running Black with an older Python version that does not support new syntax used in your source file.
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/regrtest_data/bad_package/__init__.py: Cannot parse: 3:22: raise missing.Missing..
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/regrtest_data/py3k_error_flag.py: cannot use --safe with this file; failed to parse source file AST: invalid syntax (<unknown>, line 4)
+This could be caused by running Black with an older Python version that does not support new syntax used in your source file.
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/regrtest_data/descriptor_crash.py: Cannot parse: 21:10:     print p.getPage(sys.argv[1])
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/regrtest_data/syntax_error.py: Cannot parse: 1:8: class A extends B {}
+error: cannot format /root/Aperion/aperion.cc/coala-env-old/lib64/python3.9/site-packages/pylint/test/regrtest_data/py3k_errors_and_warnings.py: Cannot parse: 19:6: print 'not in python3'
+
+Oh no! 💥 💔 💥
+3993 files left unchanged, 50 files failed to reformat.
+NoFilesFoundError: No files matching the pattern "projects/**/*.css" were found.
+    at standalone (file:///usr/lib/node_modules/stylelint/lib/standalone.mjs:292:43)
+aperion.cc/coala-env-old/lib/python3.9/site-packages/astroid/tests/testdata/python2/data/joined_strings.py: "pyflakes[F]" failed during execution due to RecursionError('maximum recursion depth exceeded')
+Run flake8 with greater verbosity to see more details

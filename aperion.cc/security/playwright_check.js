@@ -1,4 +1,4 @@
-const { chromium } = require('playwright');
+const { chromium } = require("playwright");
 
 (async () => {
   const browser = await chromium.launch();
@@ -7,12 +7,12 @@ const { chromium } = require('playwright');
   let errorExcerpt = "";
 
   try {
-    const response = await page.goto('http://aperion.cc', { waitUntil: 'load', timeout: 15000 });
+    const response = await page.goto("http://aperion.cc", { waitUntil: "load", timeout: 15000 });
     console.log(`🌐 Status: ${response.status()}`);
     if (response.status() !== 200) {
       console.log("❌ Error Excerpt:");
       const excerpt = await page.content();
-      errorExcerpt = excerpt.substring(0, 500).replace(/\s+/g, ' ');
+      errorExcerpt = excerpt.substring(0, 500).replace(/\s+/g, " ");
       console.log(errorExcerpt);
     } else {
       console.log("✅ No error detected.");
@@ -25,6 +25,6 @@ const { chromium } = require('playwright');
   await browser.close();
 
   // Save excerpt for Verity summary
-  const fs = require('fs');
-  fs.writeFileSync('/var/www/aperion.cc/security/playwright_error_excerpt.log', errorExcerpt || "No error detected.");
+  const fs = require("fs");
+  fs.writeFileSync("/var/www/aperion.cc/security/playwright_error_excerpt.log", errorExcerpt || "No error detected.");
 })();
