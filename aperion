@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+
+from aperion_linter import python, js, css, markdown, shell, cpp, summary
+
+def main():
+    print("🚀 Starting Aperion Linter Suite for the ENTIRE REPO!")
+
+    python.lint_python()
+    js.lint_js()
+    css.lint_css()
+    markdown.lint_markdown()
+    shell.lint_shell()
+    cpp.lint_cpp()
+
+    summary.final_summary()
+
+if __name__ == "__main__":
+    main()
